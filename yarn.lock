@@ -7223,6 +7223,11 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
+typeface-play@^1.1.13:
+  version "1.1.13"
+  resolved "https://registry.yarnpkg.com/typeface-play/-/typeface-play-1.1.13.tgz#1d211a731bfbd582b13efcd2ca6d4753ce8dbaea"
+  integrity sha512-98jE1ro+hfngN6BgB+vn5+TiMdMuzL1Dh5/Osl924JubpKi6HYcrVWm8YB8dFGSMXhTjM33yMHaugHQ9hSdx/Q==
+
 unbox-primitive@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/unbox-primitive/-/unbox-primitive-1.0.1.tgz#085e215625ec3162574dc8859abee78a59b14471"

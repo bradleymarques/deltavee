@@ -2,7 +2,8 @@
   = render(partial: "pages/pages_navigation")
 
   main.px-3
-    h1 = t("app_name")
+    h1.display-1 = t("app_name")
+    h2 = t("app_name_long")
     p.lead
       = t("app_description")
     .d-grid.gap-2

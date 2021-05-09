@@ -29,3 +29,5 @@ document.addEventListener("turbolinks:load", function() {
     $('.toast').toast('show')
   })
 })
+
+require("typeface-play")
