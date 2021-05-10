@@ -1,7 +1,7 @@
 .cover-container.d-flex.w-100.h-100.p-3.mx-auto.flex-column
   = render(partial: "pages/pages_navigation")
   main.px-3
-    h1.text-center = t('login')
+    h1.text-center = t('navigation.login_long')
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       = render("devise/shared/error_messages", resource: resource)
 
