@@ -4,6 +4,9 @@ class PagesController < ApplicationController
   def home
   end
 
+  def about
+  end
+
   private
 
   def check_signed_in
