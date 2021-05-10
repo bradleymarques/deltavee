@@ -1,15 +1,18 @@
 ENV["RAILS_ENV"] ||= "test"
-require 'simplecov'
+require "simplecov"
 SimpleCov.start
 
-if ENV['CI'] == 'true'
-  require 'codecov'
+if ENV["CI"] == "true"
+  require "codecov"
   SimpleCov.formatter = SimpleCov::Formatter::Codecov
 end
 
 require_relative "../config/environment"
 require "rails/test_help"
-require 'faker'
+require "faker"
+
+require "minitest/autorun"
+require "minitest/focus"
 
 module ActiveSupport
   class TestCase

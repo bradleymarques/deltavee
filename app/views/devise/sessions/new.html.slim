@@ -7,9 +7,9 @@
 
       .form-group.row.mb-2
         .col-sm-4.col-form-label
-          = f.label(:email)
+          = f.label(:username)
         .col-sm-8
-          = f.email_field(:email, autofocus: true, autocomplete: "email", class: "form-control")
+          = f.text_field(:username, autofocus: true, autocomplete: "username", class: "form-control")
 
       .form-group.row.mb-2
         .col-sm-4.col-form-label
