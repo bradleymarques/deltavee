@@ -31,3 +31,5 @@ document.addEventListener("turbolinks:load", function() {
 })
 
 require("typeface-play")
+
+const images = require.context("../images", true)

@@ -1,32 +1,33 @@
-.cover-container.d-flex.w-100.h-100.p-3.mx-auto.flex-column
-  = render(partial: "pages/pages_navigation")
-  main.px-3
-    h1.text-center = t('login')
-    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-      = render("devise/shared/error_messages", resource: resource)
+= render(partial: "pages/pages_navigation")
 
-      .form-group.row.mb-2
-        .col-sm-4.col-form-label
-          = f.label(:email)
-        .col-sm-8
-          = f.email_field(:email, autofocus: true, autocomplete: "email", class: "form-control")
+section.d-flex.align-items-center.position-relative.vh-100.cover.bg-dark.hero
+  .container-fluid
+    .row.justify-content-center
+      .col.col-sm-12.col-lg-4.col-md-8.shadow-lg.p-5.mb-5.bg-dark.rounded
+        h1.text-center.mb-5 = t('navigation.login_long')
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          = render("devise/shared/error_messages", resource: resource)
 
-      .form-group.row.mb-2
-        .col-sm-4.col-form-label
-          = f.label(:password)
-        .col-sm-8
-          = f.password_field(:password, autocomplete: "current-password", class: "form-control")
+          .form-group.row.mb-2
+            .col-sm-4.col-form-label
+              = f.label(:username)
+            .col-sm-8
+              = f.text_field(:username, autofocus: true, autocomplete: "username", class: "form-control")
 
-      - if devise_mapping.rememberable?
-        .form-group.row.mb-2
-          .col-sm-4.col-form-label
-            = f.label(:remember_me)
-          .col-sm-8
-            = f.check_box(:remember_me)
+          .form-group.row.mb-2
+            .col-sm-4.col-form-label
+              = f.label(:password)
+            .col-sm-8
+              = f.password_field(:password, autocomplete: "current-password", class: "form-control")
 
-      .actions.d-grid.gap-2
-        = f.submit("Log in", class: "btn btn-lg btn-primary fw-bold md-2")
+          - if devise_mapping.rememberable?
+            .form-group.row.mb-2
+              .col-sm-4.col-form-label
+                = f.label(:remember_me)
+              .col-sm-8
+                = f.check_box(:remember_me)
 
-      = render("devise/shared/links")
+          .actions.d-grid.gap-2
+            = f.submit("Log in", class: "btn btn-lg btn-primary fw-bold md-2")
 
-  = render(partial: "pages/pages_footer")
+          = render("devise/shared/links")

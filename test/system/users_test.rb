@@ -4,12 +4,12 @@ require "application_system_test_case"
 class UsersTest < ApplicationSystemTestCase
   test "a user can visit the root URL, click register and create an account" do
     visit(root_url)
-    register_buttons = page.find_all("a", text: I18n.t("register"))
-    assert_equal(2, register_buttons.count)
+    register_buttons = page.find_all("a", text: I18n.t("navigation.register"))
     register_buttons.first.click
 
-    assert_selector("h1", text: I18n.t("register"))
+    assert_selector("h1", text: I18n.t("navigation.register"))
 
+    fill_in("Username", with: "buzz_lightyear")
     fill_in("Email", with: "someone@example.com")
     fill_in("Password", with: "some-strong-password")
     fill_in("Password confirmation", with: "some-strong-password")
@@ -24,12 +24,12 @@ class UsersTest < ApplicationSystemTestCase
     email = user.email
 
     visit(root_url)
-    register_buttons = page.find_all("a", text: I18n.t("register"))
-    assert_equal(2, register_buttons.count)
+    register_buttons = page.find_all("a", text: I18n.t("navigation.register"))
     register_buttons.first.click
 
-    assert_selector("h1", text: I18n.t("register"))
+    assert_selector("h1", text: I18n.t("navigation.register_long"))
 
+    fill_in("Username", with: "buzz_lightyear")
     fill_in("Email", with: email)
     fill_in("Password", with: "some-strong-password")
     fill_in("Password confirmation", with: "some-strong-password")
@@ -41,11 +41,10 @@ class UsersTest < ApplicationSystemTestCase
 
   test "a user cannot register an account without specifying a password" do
     visit(root_url)
-    register_buttons = page.find_all("a", text: I18n.t("register"))
-    assert_equal(2, register_buttons.count)
+    register_buttons = page.find_all("a", text: I18n.t("navigation.register"))
     register_buttons.first.click
 
-    assert_selector("h1", text: I18n.t("register"))
+    assert_selector("h1", text: I18n.t("navigation.register_long"))
 
     fill_in("Email", with: "someone@example.com")
 
@@ -56,12 +55,12 @@ class UsersTest < ApplicationSystemTestCase
 
   test "a user cannot register an account without a matching password confirmation" do
     visit(root_url)
-    register_buttons = page.find_all("a", text: I18n.t("register"))
-    assert_equal(2, register_buttons.count)
+    register_buttons = page.find_all("a", text: I18n.t("navigation.register"))
     register_buttons.first.click
 
-    assert_selector("h1", text: I18n.t("register"))
+    assert_selector("h1", text: I18n.t("navigation.register_long"))
 
+    fill_in("Username", with: "buzz_lightyear")
     fill_in("Email", with: "someone@example.com")
     fill_in("Password", with: "some-strong-password")
     fill_in("Password confirmation", with: "this is not the same password")
@@ -75,13 +74,12 @@ class UsersTest < ApplicationSystemTestCase
     user = FactoryBot.create(:user)
 
     visit(root_url)
-    login_buttons = page.find_all("a", text: I18n.t("login"))
-    assert_equal(2, login_buttons.count)
+    login_buttons = page.find_all("a", text: I18n.t("navigation.login"))
     login_buttons.first.click
 
-    assert_selector("h1", text: I18n.t("login"))
+    assert_selector("h1", text: I18n.t("navigation.login_long"))
 
-    fill_in("Email", with: user.email)
+    fill_in("Username", with: user.username)
     fill_in("Password", with: "some-strong-password")
 
     find('input[name="commit"]').click
@@ -93,13 +91,12 @@ class UsersTest < ApplicationSystemTestCase
     user = FactoryBot.create(:user, :unconfirmed)
 
     visit(root_url)
-    login_buttons = page.find_all("a", text: I18n.t("login"))
-    assert_equal(2, login_buttons.count)
+    login_buttons = page.find_all("a", text: I18n.t("navigation.login"))
     login_buttons.first.click
 
-    assert_selector("h1", text: I18n.t("login"))
+    assert_selector("h1", text: I18n.t("navigation.login_long"))
 
-    fill_in("Email", with: user.email)
+    fill_in("Username", with: user.username)
     fill_in("Password", with: "some-strong-password")
 
     find('input[name="commit"]').click
@@ -111,20 +108,19 @@ class UsersTest < ApplicationSystemTestCase
     FactoryBot.create(:user, :unconfirmed)
 
     visit(root_url)
-    login_buttons = page.find_all("a", text: I18n.t("login"))
-    assert_equal(2, login_buttons.count)
+    login_buttons = page.find_all("a", text: I18n.t("navigation.login"))
     login_buttons.first.click
 
-    assert_selector("h1", text: I18n.t("login"))
+    assert_selector("h1", text: I18n.t("navigation.login_long"))
 
-    fill_in("Email", with: "thisisthewrongusername@example.com")
+    fill_in("Username", with: "thisisthewrongusername")
     fill_in("Password", with: "some-strong-password")
 
     find('input[name="commit"]').click
 
     assert(
       has_text?(
-        I18n.t("devise.failure.invalid", authentication_keys: "Email")
+        I18n.t("devise.failure.invalid", authentication_keys: "Username")
       )
     )
   end
@@ -133,20 +129,19 @@ class UsersTest < ApplicationSystemTestCase
     user = FactoryBot.create(:user, :unconfirmed)
 
     visit(root_url)
-    login_buttons = page.find_all("a", text: I18n.t("login"))
-    assert_equal(2, login_buttons.count)
+    login_buttons = page.find_all("a", text: I18n.t("navigation.login"))
     login_buttons.first.click
 
-    assert_selector("h1", text: I18n.t("login"))
+    assert_selector("h1", text: I18n.t("navigation.login_long"))
 
-    fill_in("Email", with: user.email)
+    fill_in("Username", with: user.username)
     fill_in("Password", with: "") # no password
 
     find('input[name="commit"]').click
 
     assert(
       has_text?(
-        I18n.t("devise.failure.invalid", authentication_keys: "Email")
+        I18n.t("devise.failure.invalid", authentication_keys: "Username")
       )
     )
   end
@@ -155,11 +150,10 @@ class UsersTest < ApplicationSystemTestCase
     user = FactoryBot.create(:user, :unconfirmed)
 
     visit(root_url)
-    login_buttons = page.find_all("a", text: I18n.t("login"))
-    assert_equal(2, login_buttons.count)
+    login_buttons = page.find_all("a", text: I18n.t("navigation.login"))
     login_buttons.first.click
 
-    assert_selector("h1", text: I18n.t("login"))
+    assert_selector("h1", text: I18n.t("navigation.login_long"))
     assert(has_text?("Forgot your password?"))
     click_on("Forgot your password?")
 
@@ -174,11 +168,10 @@ class UsersTest < ApplicationSystemTestCase
   test "a user cannot reveal the passwords that are on the system by the forgot
         password mechanism" do
     visit(root_url)
-    login_buttons = page.find_all("a", text: I18n.t("login"))
-    assert_equal(2, login_buttons.count)
+    login_buttons = page.find_all("a", text: I18n.t("navigation.login"))
     login_buttons.first.click
 
-    assert_selector("h1", text: I18n.t("login"))
+    assert_selector("h1", text: I18n.t("navigation.login_long"))
     assert(has_text?("Forgot your password?"))
     click_on("Forgot your password?")
 
@@ -194,8 +187,7 @@ class UsersTest < ApplicationSystemTestCase
     user = FactoryBot.create(:user)
 
     visit(root_url)
-    login_buttons = page.find_all("a", text: I18n.t("login"))
-    assert_equal(2, login_buttons.count)
+    login_buttons = page.find_all("a", text: I18n.t("navigation.login"))
     login_buttons.first.click
 
     assert(has_text?("Didn't receive confirmation instructions?"))
@@ -213,8 +205,7 @@ class UsersTest < ApplicationSystemTestCase
     user = FactoryBot.create(:user)
 
     visit(root_url)
-    login_buttons = page.find_all("a", text: I18n.t("login"))
-    assert_equal(2, login_buttons.count)
+    login_buttons = page.find_all("a", text: I18n.t("navigation.login"))
     login_buttons.first.click
 
     assert(has_text?("Didn't receive unlock instructions?"))

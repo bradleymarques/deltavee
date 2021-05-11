@@ -1,9 +1,23 @@
 en:
-  app_name: "ΔV"
-  app_name_long: "DeltaVee"
-  app_description: "An open source video game about space exploration, resource exploitation, market expansion, and extermination"
-  login: "Log in"
-  register: "Register"
-  home: "Home"
-  dashboard: "Dashboard"
-  github: "GitHub"
+  app:
+    app_name: "ΔV"
+    app_name_long: "DeltaVee"
+  about:
+    what_the_heck_is_this: "What the heck is this?"
+    long_description_one: "ΔV (DeltaVee) is a sci-fi role-playing video game, built using web development technology.  It is designed to be an \"In-Character\" (IC) role-playing simulation of a futuristic spaceship and space colony management software."
+    long_description_two: "The game is completely free-to-play and is open source."
+    long_description_three: "Fly safe and let me know what you think at:"
+    github: "GitHub"
+  home:
+    app_description: "An all-inclusive dashboard for your extra-terrestrial adventures"
+  navigation:
+    about: "About"
+    login: "Log in"
+    login_long: "Commander Login"
+    register: "Register"
+    register_long: "Register as a commander"
+    home: "Home"
+    dashboard: "Dashboard"
+  users:
+    username_explanation: "Your username will be visible to other players"
+    email_explanation: "Your email is not visible to other players"

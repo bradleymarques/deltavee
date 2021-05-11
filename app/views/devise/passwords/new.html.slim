@@ -1,20 +1,21 @@
-.cover-container.d-flex.w-100.h-100.p-3.mx-auto.flex-column
-  = render(partial: "pages/pages_navigation")
-  main.px-3
-    h1.text-center = "Forgot your password?"
+= render(partial: "pages/pages_navigation")
 
-  = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-    = render "devise/shared/error_messages", resource: resource
+section.d-flex.align-items-center.position-relative.vh-100.cover.bg-dark.hero
+  .container-fluid
+    .row.justify-content-center
+      .col.col-sm-12.col-lg-4.col-md-8.shadow-lg.p-5.mb-5.bg-dark.rounded
+        h1.text-center.mb-5 = "Forgot your password?"
 
-    .form-group.row.mb-2
-      .col-sm-4.col-form-label
-        = f.label :email
-      .col-sm-8
-        = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"
+        = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+          = render "devise/shared/error_messages", resource: resource
 
-    .actions.d-grid.gap-2
-      = f.submit("Send me reset password instructions", class: "btn btn-lg btn-primary fw-bold md-2")
+          .form-group.row.mb-2
+            .col-sm-4.col-form-label
+              = f.label :email
+            .col-sm-8
+              = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control"
 
-    = render("devise/shared/links")
+          .actions.d-grid.gap-2
+            = f.submit("Send me reset password instructions", class: "btn btn-lg btn-primary fw-bold md-2")
 
-  = render(partial: "pages/pages_footer")
+          = render("devise/shared/links")
