@@ -1,10 +1,10 @@
 = render(partial: "pages/pages_navigation")
 
-section.d-flex.align-items-center.position-relative.vh-100.cover.bg-dark
+section.d-flex.align-items-center.position-relative.vh-100.cover.bg-dark.hero
   .container-fluid
     .row.justify-content-center
-      .col.col-sm-12.col-lg-4.col-md-8
-        h1.text-center = "Forgot your password?"
+      .col.col-sm-12.col-lg-4.col-md-8.shadow-lg.p-5.mb-5.bg-dark.rounded
+        h1.text-center.mb-5 = "Forgot your password?"
 
         = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
           = render "devise/shared/error_messages", resource: resource
