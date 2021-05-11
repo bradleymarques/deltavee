@@ -1,6 +1,7 @@
-header.masthead.mb-auto
-  nav.nav.nav-masthead.justify-content-center
-    = link_to(t("navigation.home"), root_path, class: "nav-link")
-    = link_to(t("navigation.login"), new_user_session_path, class: "nav-link")
-    = link_to(t("navigation.register"), new_user_registration_path, class: "nav-link")
-    = link_to(t("navigation.about"), about_path, class: "nav-link")
+header.fixed-top.page-header
+  .container-fluid.m-0.p-0
+    nav#navbar.navbar.navbar-expand-lg.navbar-dark.bg-dark.justify-content-center
+      = link_to(t("navigation.home"), root_path, class: "nav-link")
+      = link_to(t("navigation.login"), new_user_session_path, class: "nav-link")
+      = link_to(t("navigation.register"), new_user_registration_path, class: "nav-link")
+      = link_to(t("navigation.about"), about_path, class: "nav-link")

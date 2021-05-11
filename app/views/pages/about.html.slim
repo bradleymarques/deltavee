@@ -1,15 +1,15 @@
-.cover-container.d-flex.w-100.h-100.p-3.mx-auto.flex-column.text-center
-  = render(partial: "pages/pages_navigation")
+= render(partial: "pages/pages_navigation")
 
-  main.px-3
-    h1 = t("navigation.about")
-    h2 = t("about.what_the_heck_is_this")
-    p.lead
-      = t("about.long_description_one")
-    p.lead
-      = t("about.long_description_two")
-    p.lead
-      = t("about.long_description_three")
-    = mail_to("bradleyrcmarques@gmail.com", "bradleyrcmarques@gmail.com", subject: "ΔV Feedback")
-
-  = render(partial: "pages/pages_footer")
+section.d-flex.align-items-center.position-relative.vh-100.cover.bg-dark
+  .container-fluid
+    .row.justify-content-center
+      .col.col-sm-12.col-lg-4.col-md-8
+        h1 = t("navigation.about")
+        h2 = t("about.what_the_heck_is_this")
+        p.lead
+          = t("about.long_description_one")
+        p.lead
+          = t("about.long_description_two")
+        p.lead
+          = t("about.long_description_three")
+        = mail_to("bradleyrcmarques@gmail.com", "bradleyrcmarques@gmail.com", subject: "ΔV Feedback")

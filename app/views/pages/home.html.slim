@@ -1,13 +1,10 @@
-.cover-container.d-flex.w-100.h-100.p-3.mx-auto.flex-column.text-center
-  = render(partial: "pages/pages_navigation")
+= render(partial: "pages/pages_navigation")
 
-  main.px-3
-    h1.display-1 = t("app.app_name")
-    h2 = t("app.app_name_long")
-    p.lead
-      = t("home.app_description")
-    .d-grid.gap-2
-      = link_to(t("navigation.login_long"), new_user_session_path, class: "btn btn-lg btn-primary fw-bold md-2")
-      = link_to(t("navigation.register_long"), new_user_registration_path, class: "btn btn-lg btn-secondary fw-bold md-2")
-
-  = render(partial: "pages/pages_footer")
+section.d-flex.align-items-center.position-relative.vh-100.cover.hero
+  .container-fluid
+    .row
+      .col-12.text-center
+        h1.display-1 = t("app.app_name")
+        .mt-3
+          = link_to(t("navigation.login"), new_user_session_path, class: "btn btn-lg btn-primary fw-bold m-2")
+          = link_to(t("navigation.register"), new_user_registration_path, class: "btn btn-lg btn-secondary fw-bold m-2")
