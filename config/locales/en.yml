@@ -7,9 +7,9 @@ en:
     long_description_one: "ΔV (DeltaVee) is a sci-fi role-playing video game, built using web development technology.  It is designed to be an \"In-Character\" (IC) role-playing simulation of a futuristic spaceship and space colony management software."
     long_description_two: "The game is completely free-to-play and is open source."
     long_description_three: "Fly safe and let me know what you think at:"
+    github: "GitHub"
   home:
     app_description: "An all-inclusive dashboard for your extra-terrestrial adventures"
-    github: "GitHub"
   navigation:
     about: "About"
     login: "Log in"

@@ -8,8 +8,11 @@ section.d-flex.align-items-center.position-relative.vh-100.cover.bg-dark
         h2 = t("about.what_the_heck_is_this")
         p.lead
           = t("about.long_description_one")
-        p.lead
+        p.lead.fw-bold.text-primary
           = t("about.long_description_two")
         p.lead
           = t("about.long_description_three")
-        = mail_to("bradleyrcmarques@gmail.com", "bradleyrcmarques@gmail.com", subject: "ΔV Feedback")
+        p
+          = mail_to("bradleyrcmarques@gmail.com", "bradleyrcmarques@gmail.com", subject: "ΔV Feedback")
+        p
+          = link_to(t("about.github"), "GitHub")
