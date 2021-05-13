@@ -14,6 +14,7 @@ en:
     about: "About"
     login: "Log in"
     login_long: "Commander Login"
+    logout: "Logout"
     register: "Register"
     register_long: "Register as a commander"
     home: "Home"
