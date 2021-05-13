@@ -7,3 +7,17 @@ a:hover {
   color: darken($primary, 20%);
   transition: 0.2s;
 }
+
+.dropdown-item {
+  color: rgba($white, 0.55);
+}
+
+.dropdown-item:hover {
+  color: rgba($white, 0.75);
+  background-color: lighten($primary, 10%);
+}
+
+.nav-link.active {
+  background-color: lighten($primary, 10%);
+  border-bottom: 1px solid $white;
+}

@@ -9,16 +9,9 @@ require("@rails/activestorage").start()
 require("channels")
 require("bootstrap")
 
-// Uncomment to copy all static images under ../images to the output folder and reference
-// them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
-// or the `imagePath` JavaScript helper below.
-//
-// const images = require.context('../images', true)
-// const imagePath = (name) => images(name, true)
-
 import "css/application";
-import 'jquery'
-import "popper.js"
+import "jquery";
+import "popper.js";
 
 import "../css/application";
 
@@ -31,5 +24,12 @@ document.addEventListener("turbolinks:load", function() {
 })
 
 require("typeface-play")
+
+// Uncomment to copy all static images under ../images to the output folder and reference
+// them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
+// or the `imagePath` JavaScript helper below.
+//
+// const images = require.context('../images', true)
+// const imagePath = (name) => images(name, true)
 
 const images = require.context("../images", true)

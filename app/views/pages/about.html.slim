@@ -1,10 +1,10 @@
 = render(partial: "pages/pages_navigation")
 
-section.d-flex.align-items-center.position-relative.vh-100.cover.bg-dark
+section.d-flex.align-items-center.position-relative.vh-100.cover.bg-dark.hero
   .container-fluid
     .row.justify-content-center
-      .col.col-sm-12.col-lg-4.col-md-8
-        h1 = t("navigation.about")
+      .col.col-sm-12.col-lg-6.col-md-10.shadow-lg.p-5.mb-5.bg-dark.rounded
+        h1.text-center.mb-5 = t("navigation.about")
         h2 = t("about.what_the_heck_is_this")
         p.lead
           = t("about.long_description_one")
