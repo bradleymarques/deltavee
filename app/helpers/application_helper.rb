@@ -1,4 +1,12 @@
 module ApplicationHelper
+  def nav_link_klass(path)
+    if current_page?(path)
+      "nav-link active"
+    else
+      "nav-link"
+    end
+  end
+
   def toast_klass(flash_message_klass)
     case flash_message_klass.to_sym
     when :alert
