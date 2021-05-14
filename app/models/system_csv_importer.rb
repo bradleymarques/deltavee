@@ -4,15 +4,21 @@ require "csv"
 # Imports systems from a CSV (semi-colon delimited) file
 #
 class SystemCsvImporter
-  def initialize(filename:)
+  def initialize(filename:, show_progress: false)
     @filename = filename
+    @show_progress = show_progress
     check_file_exists
   end
 
   def import
+    puts("Importing systems from #{@filename}") if @show_progress
+
     CSV.foreach(@filename, { col_sep: ";", headers: true }) do |row|
+      print("*") if @show_progress
       import_system(row)
     end
+
+    puts(" Done!") if @show_progress
   end
 
   private
