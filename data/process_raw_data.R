@@ -13,21 +13,6 @@ raw_data <-
     na.strings = c("")
   )
 
-build_delta_vee_name <- function(giliese_catalogue_name,
-                                 bayer_flamsteed_designation,
-                                 proper_name) {
-  ifelse(
-    !is.na(proper_name),
-    proper_name,
-    ifelse(
-      !is.na(bayer_flamsteed_designation),
-      bayer_flamsteed_designation,
-      ifelse(!is.na(giliese_catalogue_name), giliese_catalogue_name, NA)
-    )
-  )
-  
-}
-
 stars <- raw_data %>%
   arrange(dist) %>%
   head(NUMBER_STARS_TO_CHOOSE) %>%
@@ -43,11 +28,6 @@ stars <- raw_data %>%
     z_parsecs = z,
     constellation = con,
     luminosity = lum
-  ) %>%
-  mutate(deltavee_name = build_delta_vee_name(
-    giliese_catalogue_name,
-    bayer_flamsteed_designation,
-    proper_name
-  ))
+  )
 
-write.csv2(stars, file = "~/deltavee/data/stars.csv", row.names = FALSE)
+write.csv2(stars, file = "~/deltavee/data/stars.csv", row.names = FALSE, na = "")

@@ -16,10 +16,18 @@ ActiveRecord::Schema.define(version: 2021_05_13_165520) do
   enable_extension "plpgsql"
 
   create_table "systems", force: :cascade do |t|
-    t.float "x_position", null: false
-    t.float "y_position", null: false
-    t.float "z_position", null: false
-    t.string "proper_name", null: false
+    t.string "name", null: false
+    t.float "x_parsecs", null: false
+    t.float "y_parsecs", null: false
+    t.float "z_parsecs", null: false
+    t.string "giliese_catalogue_name"
+    t.string "bayer_flamsteed_designation"
+    t.string "proper_name"
+    t.float "absolute_magnitude"
+    t.string "spectral_type"
+    t.float "colour_index"
+    t.string "constellation"
+    t.float "luminosity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
