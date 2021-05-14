@@ -50,4 +50,4 @@ stars <- raw_data %>%
     proper_name
   ))
 
-write.csv2(stars, file = "~/deltavee/data/stars.csv")
+write.csv2(stars, file = "~/deltavee/data/stars.csv", row.names = FALSE)
