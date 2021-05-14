@@ -23,33 +23,7 @@ class SystemCsvImporterTest < ActiveSupport::TestCase
     importer = SystemCsvImporter.new(filename: filename)
 
     assert_difference("System.count", 1) do
-      assert(importer.import)
-    end
-
-    system = System.last
-    assert(system)
-
-    assert_equal("Sol", system.name)
-    assert_equal(0.000005, system.x_parsecs)
-    assert_equal(0.000000, system.y_parsecs)
-    assert_equal(0.000000, system.z_parsecs)
-    assert_nil(system.giliese_catalogue_name)
-    assert_nil(system.bayer_flamsteed_designation)
-    assert_equal("Sol", system.proper_name)
-    assert_equal(4.85, system.absolute_magnitude)
-    assert_equal("G2V", system.spectral_type)
-    assert_equal(0.656, system.colour_index)
-    assert_nil(system.constellation)
-    assert_equal(1.0, system.luminosity)
-  end
-
-  test "#import given a file that contains a single valid row
-        creates the system with correct data and returns true" do
-    filename = Rails.root.join("test", "fixtures", "files", "one_valid.csv")
-    importer = SystemCsvImporter.new(filename: filename)
-
-    assert_difference("System.count", 1) do
-      assert(importer.import)
+      importer.import
     end
 
     system = System.last
