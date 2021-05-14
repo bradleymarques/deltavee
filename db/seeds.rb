@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+filename = Rails.root.join("data", "stars.csv")
+importer = SystemCsvImporter.new(filename: filename, show_progress: true)
+importer.import
+
+FactoryBot.create(
+  :user,
+  username: "player",
+  password: "Asdfg;lkjh",
+  password_confirmation: "Asdfg;lkjh"
+)

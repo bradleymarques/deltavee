@@ -19,6 +19,7 @@ en:
     register_long: "Register as a commander"
     home: "Home"
     dashboard: "Dashboard"
+    map: "Universe Map"
   users:
     username_explanation: "Your username will be visible to other players"
     email_explanation: "Your email is not visible to other players"
