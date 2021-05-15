@@ -1,6 +1,9 @@
 ENV["RAILS_ENV"] ||= "test"
 require "simplecov"
-SimpleCov.start
+SimpleCov.start do
+  add_filter "test/"
+  add_filter "**/*_test.rb"
+end
 
 if ENV["CI"] == "true"
   require "codecov"

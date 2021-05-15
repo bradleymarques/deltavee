@@ -33,13 +33,15 @@ class NotificationsController < RestrictedAccessController
     )
 
     if @notification.save
-      flash[:success] = "Sent"
+      flash[:success] = I18n.t("notifications.sent")
       redirect_to(outbox_path)
     else
       flash[:alert] = @notification.errors.full_messages.to_sentence
       render(:new)
     end
   end
+
+  private
 
   def create_params
     params.require(:notification).permit(:recipient, :subject, :content)

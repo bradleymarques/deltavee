@@ -24,6 +24,7 @@ en:
   notifications:
     compose: "+ Compose"
     send: "Send"
+    sent: "Sent"
   users:
     username_explanation: "Your username will be visible to other players"
     email_explanation: "Your email is not visible to other players"
