@@ -1,7 +1,5 @@
 class NotificationPolicy < ApplicationPolicy
-  class Scope < Scope
-    def resolve
-      scope.none
-    end
+  def show?
+    record.sender == user || record.recipient == user
   end
 end

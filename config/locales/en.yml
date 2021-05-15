@@ -20,7 +20,10 @@ en:
     home: "Home"
     dashboard: "Dashboard"
     map: "Universe Map"
-    notifications: "Email"
+    notifications: "Email (%{count})"
+  notifications:
+    compose: "+ Compose"
+    send: "Send"
   users:
     username_explanation: "Your username will be visible to other players"
     email_explanation: "Your email is not visible to other players"

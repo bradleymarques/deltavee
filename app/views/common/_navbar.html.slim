@@ -7,11 +7,11 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.p-0.sticky-top
       // Left-side navbar menus
       ul.navbar-nav.me-auto.mb-2.mb-lg-0
         li.nav-item
-          = link_to(t("navigation.dashboard"), dashboard_path, class: nav_link_klass(dashboard_path))
+          = link_to(t("navigation.dashboard"), dashboard_path, class: nav_link_klass([dashboard_path]))
         li.nav-item
-          = link_to(t("navigation.map"), map_path, class: nav_link_klass(map_path))
+          = link_to(t("navigation.map"), map_path, class: nav_link_klass([map_path]))
         li.nav-item
-          = link_to(t("navigation.notifications"), notifications_path, class: nav_link_klass(notifications_path))
+          = link_to(t("navigation.notifications", count: notification_count(current_user)), inbox_path, class: nav_link_klass([inbox_path, outbox_path, new_notification_path]))
         / li.nav-item
         /   = link_to("Link 3", "#", class: "nav-link")
         / li.nav-item.dropdown

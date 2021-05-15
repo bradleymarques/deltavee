@@ -13,6 +13,9 @@
 
   <body>
     <%= Gon::Base.render_data %>
+    <% if user_signed_in? %>
+      <%= render(partial: "common/navbar") %>
+    <% end %>
     <%= yield %>
     <%= render(partial: "common/flash_messages") %>
   </body>

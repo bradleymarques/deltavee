@@ -13,5 +13,5 @@ FactoryBot.create(
   :with_sent_notifications,
   username: "player",
   password: "Asdf;lkj",
-  password_confirmation: "Asdf;lkj",
+  password_confirmation: "Asdf;lkj"
 )

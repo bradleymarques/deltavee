@@ -11,11 +11,21 @@ FactoryBot.define do
     end
 
     trait(:with_sent_notifications) do
-      sent_notifications { [] }
+      after(:build) do |instance|
+        instance.sent_notifications = [
+          FactoryBot.create(:notification, sender: instance)
+        ]
+      end
     end
 
     trait(:with_received_notifications) do
-      received_notifications { [] }
+      after(:build) do |instance|
+        instance.received_notifications = FactoryBot.create_list(
+          :notification,
+          10,
+          recipient: instance
+        )
+      end
     end
   end
 end

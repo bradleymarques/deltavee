@@ -26,6 +26,7 @@
   "version": "0.1.0",
   "devDependencies": {
     "@babel/preset-react": "7.6.3",
+    "@types/react-plotly.js": "^2.2.4",
     "webpack-dev-server": "^3.11.2"
   }
 }

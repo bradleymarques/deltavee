@@ -3,4 +3,6 @@ class Notification < ApplicationRecord
 
   belongs_to :sender, class_name: User.name, required: true
   belongs_to :recipient, class_name: User.name, required: true
+
+  validates_inclusion_of :read, in: [true, false]
 end
