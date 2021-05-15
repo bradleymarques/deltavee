@@ -17,6 +17,8 @@ require "faker"
 require "minitest/autorun"
 require "minitest/focus"
 
+require "mocha/minitest"
+
 module ActiveSupport
   class TestCase
     # Run tests in parallel with specified workers
