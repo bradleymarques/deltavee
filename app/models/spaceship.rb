@@ -1,11 +1,14 @@
 class Spaceship < ApplicationRecord
-  belongs_to :owned_by, class_name: User.name, required: true
-
   MAX_NAME_LENGTH = 100
   MIN_NAME_LENGTH = 1
 
+  belongs_to :owned_by, class_name: User.name, required: true
+  belongs_to :fleet, required: true
+
   validates :name, presence: true, length: { minimum: MIN_NAME_LENGTH, maximum: MAX_NAME_LENGTH }
   validates :ship_class, presence: true
+
+  validate :fleet_owned_by_same_user
 
   enum ship_class: {
     shuttle: 0,
@@ -21,4 +24,12 @@ class Spaceship < ApplicationRecord
     capital: 100,
     super_capital: 110
   }
+
+  private
+
+  def fleet_owned_by_same_user
+    return if owned_by == fleet.owned_by
+
+    errors.add(:fleet, "owner is not the same as the spaceship owner")
+  end
 end
