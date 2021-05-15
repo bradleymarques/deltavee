@@ -1890,7 +1890,7 @@ Lint/PercentStringArray:
 Lint/PercentSymbolArray:
   Description: >-
                  Checks for unwanted commas and colons in %i/%I literals.
-  Enabled: true
+  Enabled: false
   VersionAdded: '0.41'
 
 Lint/RaiseException:
@@ -3204,7 +3204,7 @@ Style/DocumentDynamicEvalDefinition:
 
 Style/Documentation:
   Description: 'Document classes and non-namespace modules.'
-  Enabled: true
+  Enabled: false
   VersionAdded: '0.9'
   AllowedConstants: []
   Exclude:
@@ -4135,7 +4135,7 @@ Style/ParenthesesAroundCondition:
 Style/PercentLiteralDelimiters:
   Description: 'Use `%`-literal delimiters consistently.'
   StyleGuide: '#percent-literal-braces'
-  Enabled: true
+  Enabled: false
   VersionAdded: '0.19'
   # Specify the default preferred delimiter for all types with the 'default' key
   # Override individual delimiters (even with default specified) by specifying
@@ -4840,7 +4840,7 @@ Style/WhileUntilModifier:
 Style/WordArray:
   Description: 'Use %w or %W for arrays of words.'
   StyleGuide: '#percent-w'
-  Enabled: true
+  Enabled: false
   VersionAdded: '0.9'
   VersionChanged: '0.36'
   EnforcedStyle: percent

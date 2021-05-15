@@ -10,10 +10,74 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_13_165520) do
+ActiveRecord::Schema.define(version: 2021_05_15_120756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "fleets", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "system_id", null: false
+    t.bigint "owned_by_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["owned_by_id"], name: "index_fleets_on_owned_by_id"
+    t.index ["system_id"], name: "index_fleets_on_system_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "sender_id", null: false
+    t.bigint "recipient_id", null: false
+    t.boolean "read", default: false, null: false
+    t.string "subject", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipient_id"], name: "index_notifications_on_recipient_id"
+    t.index ["sender_id"], name: "index_notifications_on_sender_id"
+  end
+
+  create_table "spaceships", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "ship_class", null: false
+    t.bigint "fleet_id", null: false
+    t.bigint "owned_by_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["fleet_id"], name: "index_spaceships_on_fleet_id"
+    t.index ["owned_by_id"], name: "index_spaceships_on_owned_by_id"
+    t.index ["ship_class"], name: "index_spaceships_on_ship_class"
+  end
 
   create_table "systems", force: :cascade do |t|
     t.string "name", null: false
@@ -60,4 +124,9 @@ ActiveRecord::Schema.define(version: 2021_05_13_165520) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "fleets", "users", column: "owned_by_id"
+  add_foreign_key "notifications", "users", column: "recipient_id"
+  add_foreign_key "notifications", "users", column: "sender_id"
+  add_foreign_key "spaceships", "users", column: "owned_by_id"
 end

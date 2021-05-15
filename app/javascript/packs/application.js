@@ -33,3 +33,6 @@ require("typeface-play")
 // const imagePath = (name) => images(name, true)
 
 const images = require.context("../images", true)
+
+require("trix")
+require("@rails/actiontext")

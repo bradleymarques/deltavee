@@ -8,11 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': true %>
   </head>
 
   <body>
     <%= Gon::Base.render_data %>
+    <% if user_signed_in? %>
+      <%= render(partial: "common/navbar") %>
+    <% end %>
     <%= yield %>
     <%= render(partial: "common/flash_messages") %>
   </body>

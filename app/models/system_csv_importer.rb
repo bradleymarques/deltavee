@@ -59,7 +59,7 @@ class SystemCsvImporter
   end
 
   def random_system_name
-    SystemNameGenerator.new.generate
+    NameGenerators::SystemNameGenerator.new.generate
   end
 
   def check_file_exists

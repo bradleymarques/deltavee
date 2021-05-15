@@ -1,0 +1,20 @@
+.row.justify-content-center
+  .col.col-sm-12.col-lg-4.col-md-8.p-5.mb-5.bg-dark
+    = form_with model: @notification do |f|
+      .form-group.row.mb-2
+        .col-sm-4.col-form-label
+          = f.label(:recipient)
+        .col-sm-8
+          = f.text_field(:recipient, autofocus: true, autocomplete: "username", class: "form-control")
+
+      .form-group.row.mb-2
+        .col-sm-4.col-form-label
+          = f.label(:subject)
+        .col-sm-8
+          = f.text_field(:subject, autofocus: true, autocomplete: "subject", class: "form-control")
+
+      .form-group.row.mb-2
+        = f.rich_text_area :content
+
+      .actions.d-grid.gap-2
+        = f.submit(t("notifications.send"), class: "btn btn-lg btn-primary fw-bold md-2")

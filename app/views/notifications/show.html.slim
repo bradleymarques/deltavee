@@ -1,0 +1,9 @@
+.container.align-items-center
+  .row.m-4
+    h2 = @notification.subject
+
+  .row.m-4
+    h4.text-primary= @notification.sender.username
+
+  .row.m-4
+    == @notification.content

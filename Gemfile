@@ -24,6 +24,7 @@ gem "jbuilder", "~> 2.7"
 
 gem "devise"
 gem "gon"
+gem "pundit"
 
 # Use Active Storage variant
 # gem "image_processing", "~> 1.2"
@@ -51,6 +52,8 @@ group :development do
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
   gem "letter_opener"
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 group :test do
@@ -62,6 +65,7 @@ group :test do
   gem "rails-controller-testing"
   gem "codecov", require: false
   gem "minitest-focus"
+  gem "mocha"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

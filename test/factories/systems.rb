@@ -1,11 +1,11 @@
 FactoryBot.define do
   factory :system do
-    name { SystemNameGenerator.new.generate }
+    name { NameGenerators::SystemNameGenerator.new.generate }
     x { Faker::Number.between(from: 1, to: 10_000) }
     y { Faker::Number.between(from: 1, to: 10_000) }
     z { Faker::Number.between(from: 1, to: 10_000) }
-    giliese_catalogue_name { SystemNameGenerator.new.generate }
-    bayer_flamsteed_designation { SystemNameGenerator.new.generate }
+    giliese_catalogue_name { NameGenerators::SystemNameGenerator.new.generate }
+    bayer_flamsteed_designation { NameGenerators::SystemNameGenerator.new.generate }
     absolute_magnitude { Faker::Number.between(from: 1, to: 100) }
     spectral_type { ["G2V", "K1V", "sdM4"].sample }
     colour_index { Faker::Number.between(from: -1.0, to: 1.0) }

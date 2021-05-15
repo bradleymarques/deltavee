@@ -1,0 +1,11 @@
+/ Locals:
+/ notifications - a collection of Notification records
+/
+.table.m-4
+  - notifications.each do |notification|
+    = link_to(notification_path(notification))
+      .row.notification-row.d-flex
+        .col
+          = notification.sender.username
+        .col
+          = notification.subject

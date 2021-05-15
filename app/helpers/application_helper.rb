@@ -1,6 +1,10 @@
 module ApplicationHelper
-  def nav_link_klass(path)
-    if current_page?(path)
+  def notification_count(user)
+    user.received_notifications.count
+  end
+
+  def nav_link_klass(paths)
+    if paths.any? { |path| current_page?(path) }
       "nav-link active"
     else
       "nav-link"
