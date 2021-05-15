@@ -33,3 +33,19 @@ module Test
     end
   end
 end
+
+
+module ActionDispatch
+  class IntegrationTest
+    def login_as(user:)
+      params = {
+        user: {
+          username: user.username,
+          password: "some-strong-password"
+        }
+      }
+
+      post(user_session_path, params: params)
+    end
+  end
+end
