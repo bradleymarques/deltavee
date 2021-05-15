@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_13_165520) do
+ActiveRecord::Schema.define(version: 2021_05_15_095726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "spaceships", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "ship_class", null: false
+    t.bigint "owned_by_id"
+    t.index ["owned_by_id"], name: "index_spaceships_on_owned_by_id"
+  end
 
   create_table "systems", force: :cascade do |t|
     t.string "name", null: false
@@ -60,4 +67,5 @@ ActiveRecord::Schema.define(version: 2021_05_13_165520) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "spaceships", "users", column: "owned_by_id"
 end
