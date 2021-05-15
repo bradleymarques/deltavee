@@ -1,7 +1,10 @@
 class Spaceship < ApplicationRecord
   belongs_to :owned_by, class_name: User.name, required: true
 
-  validates :name, presence: true
+  MAX_NAME_LENGTH = 100
+  MIN_NAME_LENGTH = 1
+
+  validates :name, presence: true, length: { minimum: MIN_NAME_LENGTH, maximum: MAX_NAME_LENGTH }
   validates :ship_class, presence: true
 
   enum ship_class: {
