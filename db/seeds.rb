@@ -10,6 +10,6 @@ importer.import
 FactoryBot.create(
   :user,
   username: "player",
-  password: "Asdfg;lkjh",
-  password_confirmation: "Asdfg;lkjh"
+  password: "Asdf;lkj",
+  password_confirmation: "Asdf;lkj"
 )
