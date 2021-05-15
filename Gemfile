@@ -23,6 +23,7 @@ gem "jbuilder", "~> 2.7"
 # gem "bcrypt", "~> 3.1.7"
 
 gem "devise"
+gem "gon"
 
 # Use Active Storage variant
 # gem "image_processing", "~> 1.2"
@@ -37,6 +38,7 @@ group :development, :test do
   gem "rubocop", "~> 1.14", require: false
   gem "pry"
   gem "pry-nav"
+  gem "pry-rails"
   gem "factory_bot_rails"
   gem "faker", git: "https://github.com/faker-ruby/faker.git", branch: "master"
 end

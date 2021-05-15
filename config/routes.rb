@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   get "about", to: "pages#about"
   get "home", to: "pages#home"
 
+  get "system_data", to: "system_data#index"
+
   root to: "pages#home"
 end

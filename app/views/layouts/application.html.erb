@@ -12,6 +12,7 @@
   </head>
 
   <body>
+    <%= Gon::Base.render_data %>
     <%= yield %>
     <%= render(partial: "common/flash_messages") %>
   </body>
