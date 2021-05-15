@@ -1,11 +1,15 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import UniverseMap from "maps/universe_map";
+import { getNodeMajorVersion } from "typescript";
 
-document.addEventListener("DOMContentLoaded", () => {
-  const placeholderDOMElement = document.getElementById("universe-map-container");
+document.addEventListener("turbolinks:load", () => {
+  const universeMapContainer = document.getElementById("universe-map-container");
 
-  ReactDOM.render(
-    <p>The Map</p>,
-    placeholderDOMElement,
-  );
+  if (universeMapContainer) {
+    ReactDOM.render(
+      <UniverseMap url={gon.url} />,
+      universeMapContainer,
+    );
+  }
 });
