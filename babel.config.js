@@ -17,6 +17,13 @@ module.exports = function(api) {
 
   return {
     presets: [
+      [
+        require('@babel/preset-react').default,
+        {
+          development: isDevelopmentEnv || isTestEnv,
+          useBuiltIns: true
+        }
+      ],
       isTestEnv && [
         '@babel/preset-env',
         {
