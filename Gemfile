@@ -24,6 +24,8 @@ gem "jbuilder", "~> 2.7"
 
 gem "devise"
 
+gem "gon"
+
 # Use Active Storage varia nt
 # gem "image_processing", "~> 1.2"
 

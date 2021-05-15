@@ -3,7 +3,9 @@ import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from "map/orbit_controls";
 import System from "map/system";
 
-interface Props {};
+interface Props {
+  url: string;
+};
 
 interface SystemData {
   name: string;
@@ -28,6 +30,7 @@ interface SystemsResponse {
 };
 
 const UniverseMap: React.FC<Props> = (props) => {
+  const { url } = props;
   const [isLoading, setIsLoading] = React.useState(true);
   const [systems, setSystems] = React.useState([]);
 
@@ -42,7 +45,7 @@ const UniverseMap: React.FC<Props> = (props) => {
     if (!isLoading) return;
 
     fetch(
-      "http://localhost:3000/systems.json",
+      url,
       {
         method: "GET",
       }

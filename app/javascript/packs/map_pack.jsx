@@ -6,6 +6,6 @@ document.addEventListener("turbolinks:load", () => {
   const universeMapContainer = document.getElementById("universe-map-container")
 
   if (universeMapContainer) {
-    ReactDOM.render(<UniverseMap />, universeMapContainer);
+    ReactDOM.render(<UniverseMap url={gon.url} />, universeMapContainer);
   }
 });
