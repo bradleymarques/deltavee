@@ -1,5 +1,5 @@
 import * as React from "react";
-import Plot from 'react-plotly.js';
+import Plot from "react-plotly.js";
 
 interface UniverseMapProps {
   url: string

@@ -9,5 +9,13 @@ FactoryBot.define do
     trait(:unconfirmed) do
       confirmed_at { nil }
     end
+
+    trait(:with_sent_notifications) do
+      sent_notifications { [] }
+    end
+
+    trait(:with_received_notifications) do
+      received_notifications { [] }
+    end
   end
 end

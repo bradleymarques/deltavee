@@ -9,5 +9,7 @@ Rails.application.routes.draw do
 
   get "system_data", to: "system_data#index"
 
+  resources :notifications, only: [:index]
+
   root to: "pages#home"
 end

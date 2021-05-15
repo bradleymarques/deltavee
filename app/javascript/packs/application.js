@@ -5,6 +5,8 @@
 
 require("@rails/ujs").start()
 require("turbolinks").start()
+require("trix")
+require("@rails/actiontext")
 require("@rails/activestorage").start()
 require("channels")
 require("bootstrap")
@@ -33,3 +35,6 @@ require("typeface-play")
 // const imagePath = (name) => images(name, true)
 
 const images = require.context("../images", true)
+
+require("trix")
+require("@rails/actiontext")

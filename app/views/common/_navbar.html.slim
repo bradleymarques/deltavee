@@ -10,6 +10,8 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.p-0.sticky-top
           = link_to(t("navigation.dashboard"), dashboard_path, class: nav_link_klass(dashboard_path))
         li.nav-item
           = link_to(t("navigation.map"), map_path, class: nav_link_klass(map_path))
+        li.nav-item
+          = link_to(t("navigation.notifications"), notifications_path, class: nav_link_klass(notifications_path))
         / li.nav-item
         /   = link_to("Link 3", "#", class: "nav-link")
         / li.nav-item.dropdown
