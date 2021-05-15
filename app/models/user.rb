@@ -10,4 +10,7 @@ class User < ApplicationRecord
 
   has_many :sent_notifications, class_name: Notification.name, foreign_key: :sender
   has_many :received_notifications, class_name: Notification.name, foreign_key: :recipient
+
+  has_many :fleets, foreign_key: :owned_by
+  has_many :spaceships, foreign_key: :owned_by
 end

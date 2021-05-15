@@ -27,3 +27,7 @@ en:
   users:
     username_explanation: "Your username will be visible to other players"
     email_explanation: "Your email is not visible to other players"
+  welcome:
+    heading: "Welcome to the stars"
+    paragraph: "Central Command has noticed that you do not have any fleets. Click here to claim your first fleet and begin exploring the stars."
+    claim: "Claim your first fleet"

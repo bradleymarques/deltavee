@@ -1890,7 +1890,7 @@ Lint/PercentStringArray:
 Lint/PercentSymbolArray:
   Description: >-
                  Checks for unwanted commas and colons in %i/%I literals.
-  Enabled: true
+  Enabled: false
   VersionAdded: '0.41'
 
 Lint/RaiseException:

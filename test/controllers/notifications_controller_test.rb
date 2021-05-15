@@ -6,9 +6,15 @@ class NotificationsControllerTest < ActionDispatch::IntegrationTest
     login_as(user: @user)
   end
 
-  test "GET #index renders the inbox" do
-    get(notifications_url)
+  test "GET #inbox renders the inbox" do
+    get(inbox_url)
     assert_response(:ok)
-    assert_template(:index)
+    assert_template(:inbox)
+  end
+
+  test "GET #outbox renders the outbox" do
+    get(outbox_url)
+    assert_response(:ok)
+    assert_template(:outbox)
   end
 end
