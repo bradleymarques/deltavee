@@ -24,7 +24,7 @@ gem "jbuilder", "~> 2.7"
 
 gem "devise"
 
-# Use Active Storage variant
+# Use Active Storage varia nt
 # gem "image_processing", "~> 1.2"
 
 # Reduces boot times through caching; required in config/boot.rb
@@ -36,6 +36,7 @@ group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "rubocop", "~> 1.14", require: false
   gem "pry", "~> 0.13.1"
+  gem "pry-rails"
   gem "factory_bot_rails"
   gem "faker", git: "https://github.com/faker-ruby/faker.git", branch: "master"
 end

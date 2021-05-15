@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get "dashboard", to: "dashboards#show"
   get "map", to: "maps#show"
 
+  resources :systems, only: [:index]
+
   get "about", to: "pages#about"
   get "home", to: "pages#home"
 
