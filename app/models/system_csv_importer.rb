@@ -4,16 +4,21 @@ require "csv"
 # Imports systems from a CSV (semi-colon delimited) file
 #
 class SystemCsvImporter
-  def initialize(filename:, show_progress: false)
+  ALL = :all
+
+  def initialize(filename:, row_count: ALL, show_progress: false)
     @filename = filename
     @show_progress = show_progress
+    @row_count = row_count
     check_file_exists
   end
 
   def import
     puts("Importing systems from #{@filename}") if @show_progress
 
-    CSV.foreach(@filename, { col_sep: ";", headers: true }) do |row|
+    CSV.foreach(@filename, { col_sep: ";", headers: true }).with_index do |row, index|
+      break if (@row_count != ALL) && (index >= @row_count)
+
       print("*") if @show_progress
       import_system(row)
     end
@@ -26,9 +31,9 @@ class SystemCsvImporter
   def import_system(row)
     system = System.new(
       name: fetch_system_name(row),
-      x_parsecs: row["x_parsecs"],
-      y_parsecs: row["y_parsecs"],
-      z_parsecs: row["z_parsecs"],
+      x: row["x"],
+      y: row["y"],
+      z: row["z"],
       giliese_catalogue_name: row["giliese_catalogue_name"],
       bayer_flamsteed_designation: row["bayer_flamsteed_designation"],
       proper_name: row["proper_name"],
@@ -42,7 +47,7 @@ class SystemCsvImporter
     if system.valid?
       system.save!
     else
-      puts "Error in importing row: #{row}"
+      puts "Error in importing row: #{row}. Errors: #{system.errors.full_messages.to_sentence}"
     end
   end
 

@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(version: 2021_05_13_165520) do
 
   create_table "systems", force: :cascade do |t|
     t.string "name", null: false
-    t.float "x_parsecs", null: false
-    t.float "y_parsecs", null: false
-    t.float "z_parsecs", null: false
+    t.float "x", null: false
+    t.float "y", null: false
+    t.float "z", null: false
     t.string "giliese_catalogue_name"
     t.string "bayer_flamsteed_designation"
     t.string "proper_name"

@@ -3,19 +3,23 @@
 
 require(dplyr)
 
-NUMBER_STARS_TO_CHOOSE <- 10000 # Max = 119614
-
-raw_data <-
+systems <-
   read.csv2(
     file = "~/deltavee/data/hygdata_v3.csv",
     header = TRUE,
     sep = ",",
     na.strings = c("")
-  )
-
-stars <- raw_data %>%
+  ) %>%
+  mutate(
+    dist = as.numeric(dist),
+    x = as.numeric(x),
+    y = as.numeric(y),
+    z = as.numeric(z),
+    absmag = as.numeric(absmag),
+    ci = as.numeric(ci)
+  ) %>%
   arrange(dist) %>%
-  head(NUMBER_STARS_TO_CHOOSE) %>%
+  filter(dist <= 25000) %>%
   dplyr::select(
     giliese_catalogue_name = gl,
     bayer_flamsteed_designation = bf,
@@ -23,11 +27,32 @@ stars <- raw_data %>%
     absolute_magnitude = absmag,
     spectral_type = spect,
     colour_index = ci,
-    x_parsecs = x,
-    y_parsecs = y,
-    z_parsecs = z,
+    x = x,
+    y = y,
+    z = z,
     constellation = con,
-    luminosity = lum
+    luminosity = lum,
+    dist = dist
   )
 
-write.csv2(stars, file = "~/deltavee/data/stars.csv", row.names = FALSE, na = "")
+write.csv2(systems,
+           file = "~/deltavee/data/systems.csv",
+           row.names = FALSE,
+           na = "")
+
+# (Optional) Visualize a sample of the data
+require(plotly)
+fig <- plot_ly(sample_n(systems, 10000),
+               x = ~ x,
+               y = ~ y,
+               z = ~ z,
+               size = ~ absolute_magnitude**2,
+               color = ~ colour_index)
+fig <- fig %>% add_markers()
+fig <- fig %>% layout(scene = list(
+  xaxis = list(title = 'x'),
+  yaxis = list(title = 'y'),
+  zaxis = list(title = 'z')
+))
+
+fig
