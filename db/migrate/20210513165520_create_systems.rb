@@ -2,9 +2,9 @@ class CreateSystems < ActiveRecord::Migration[6.0]
   def change
     create_table :systems do |t|
       t.string :name, null: false
-      t.float :x_parsecs, null: false
-      t.float :y_parsecs, null: false
-      t.float :z_parsecs, null: false
+      t.float :x, null: false
+      t.float :y, null: false
+      t.float :z, null: false
 
       t.string :giliese_catalogue_name, null: true
       t.string :bayer_flamsteed_designation, null: true

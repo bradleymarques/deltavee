@@ -30,9 +30,9 @@ class SystemCsvImporterTest < ActiveSupport::TestCase
     assert(system)
 
     assert_equal("Sol", system.name)
-    assert_equal(0.000005, system.x_parsecs)
-    assert_equal(0.000000, system.y_parsecs)
-    assert_equal(0.000000, system.z_parsecs)
+    assert_equal(0.000005, system.x)
+    assert_equal(0.000000, system.y)
+    assert_equal(0.000000, system.z)
     assert_nil(system.giliese_catalogue_name)
     assert_nil(system.bayer_flamsteed_designation)
     assert_equal("Sol", system.proper_name)
@@ -49,6 +49,17 @@ class SystemCsvImporterTest < ActiveSupport::TestCase
     importer = SystemCsvImporter.new(filename: filename)
 
     assert_difference("System.count", 10) do
+      importer.import
+    end
+  end
+
+  test "#import given a file that contains multiple valid rows
+        creates a subset of the systems if passed the row_count argument" do
+    row_count = 4
+    filename = Rails.root.join("test", "fixtures", "files", "ten_valid.csv")
+    importer = SystemCsvImporter.new(filename: filename, row_count: row_count)
+
+    assert_difference("System.count", row_count) do
       importer.import
     end
   end

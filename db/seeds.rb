@@ -7,7 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 filename = Rails.root.join("data", "stars.csv")
-importer = SystemCsvImporter.new(filename: filename, show_progress: true)
+
+importer = SystemCsvImporter.new(
+  filename: filename,
+  row_count: 1000,
+  show_progress: true
+)
+
 importer.import
 
 FactoryBot.create(
