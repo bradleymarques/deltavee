@@ -11,7 +11,8 @@ FactoryBot.create(
   :user,
   username: "player_1",
   password: "Asdf;lkj",
-  password_confirmation: "Asdf;lkj"
+  password_confirmation: "Asdf;lkj",
+  has_signed_in_at_least_once: false
 )
 
 FactoryBot.create(

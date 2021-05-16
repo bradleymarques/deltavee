@@ -3,6 +3,10 @@
 
 require(dplyr)
 
+clean <- function(vect) {
+  gsub(pattern = "\\s+", " ", trimws(vect))
+}
+
 systems <-
   read.csv2(
     file = "~/deltavee/data/hygdata_v3.csv",
@@ -11,6 +15,11 @@ systems <-
     na.strings = c("")
   ) %>%
   mutate(
+    gl = clean(gl),
+    bf = clean(bf),
+    proper = clean(proper),
+    spect = clean(spect),
+    ci = clean(ci),
     dist = as.numeric(dist),
     x = as.numeric(x),
     y = as.numeric(y),

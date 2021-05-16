@@ -30,18 +30,18 @@ class SystemCsvImporter
 
   def import_system(row)
     system = System.new(
-      name: fetch_system_name(row),
-      x: row["x"],
-      y: row["y"],
-      z: row["z"],
-      giliese_catalogue_name: row["giliese_catalogue_name"],
-      bayer_flamsteed_designation: row["bayer_flamsteed_designation"],
-      proper_name: row["proper_name"],
-      absolute_magnitude: row["absolute_magnitude"],
-      spectral_type: row["spectral_type"],
-      colour_index: row["colour_index"],
-      constellation: row["constellation"],
-      luminosity: row["luminosity"]
+      name: clean(fetch_system_name(row)),
+      x: clean(row["x"]),
+      y: clean(row["y"]),
+      z: clean(row["z"]),
+      giliese_catalogue_name: clean(row["giliese_catalogue_name"]),
+      bayer_flamsteed_designation: clean(row["bayer_flamsteed_designation"]),
+      proper_name: clean(row["proper_name"]),
+      absolute_magnitude: clean(row["absolute_magnitude"]),
+      spectral_type: clean(row["spectral_type"]),
+      colour_index: clean(row["colour_index"]),
+      constellation: clean(row["constellation"]),
+      luminosity: clean(row["luminosity"])
     )
 
     if system.valid?
@@ -64,5 +64,11 @@ class SystemCsvImporter
 
   def check_file_exists
     raise ArgumentError unless FileTest.exist?(@filename)
+  end
+
+  def clean(str)
+    return if str.nil?
+
+    str.strip.gsub(/\s+/, " ")
   end
 end
