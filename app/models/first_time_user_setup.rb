@@ -16,19 +16,19 @@ class FirstTimeUserSetup
     Notification.create!(
       sender: SystemUser.new.system_user,
       recipient: @user,
-      content: "content",
-      subject: "subject"
+      subject: I18n.t("welcome.notification.subject"),
+      content: I18n.t("welcome.notification.content")
     )
   end
 
   def setup_user_fleet
     Fleet.create!(
-      name: "Starting Fleet",
+      name: I18n.t("welcome.fleet_name"),
       owned_by: @user,
       system: @sol,
       spaceships: [
-        Spaceship.new(name: "Scout", owned_by: @user),
-        Spaceship.new(name: "Miner", owned_by: @user)
+        Spaceship.new(name: I18n.t("ships.scout"), owned_by: @user),
+        Spaceship.new(name: I18n.t("ships.miner"), owned_by: @user)
       ]
     )
   end

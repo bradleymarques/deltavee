@@ -28,3 +28,11 @@ en:
   users:
     username_explanation: "Your username will be visible to other players"
     email_explanation: "Your email is not visible to other players"
+  welcome:
+    fleet_name: "Starting Fleet"
+    notification:
+      subject: "Subject"
+      content: "Content"
+  ships:
+    scout: "Scout"
+    miner: "Miner"
