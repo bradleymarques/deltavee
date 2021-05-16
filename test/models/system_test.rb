@@ -27,7 +27,7 @@ class SystemTest < ActiveSupport::TestCase
     refute(system.valid?)
   end
 
-  test "is invalid with a name that is neother too long nor too short" do
+  test "is valid with a name that is neither too long nor too short" do
     long_name = Faker::Lorem.characters(number: System::MAX_NAME_LENGTH - 1)
     system1 = FactoryBot.build(:system, name: long_name)
     assert(system1.valid?)
@@ -35,5 +35,15 @@ class SystemTest < ActiveSupport::TestCase
     short_name = Faker::Lorem.characters(number: System::MIN_NAME_LENGTH + 1)
     system2 = FactoryBot.build(:system, name: short_name)
     assert(system2.valid?)
+  end
+
+  test "the name must be unique" do
+    sol = FactoryBot.create(:system, :sol)
+    another_sol = FactoryBot.build(:system, name: sol.name)
+    refute(another_sol.valid?)
+
+    expected_error = "Name has already been taken"
+
+    assert_equal(expected_error, another_sol.errors.full_messages.to_sentence)
   end
 end

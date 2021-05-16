@@ -69,14 +69,12 @@ ActiveRecord::Schema.define(version: 2021_05_15_120756) do
 
   create_table "spaceships", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "ship_class", null: false
     t.bigint "fleet_id", null: false
     t.bigint "owned_by_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["fleet_id"], name: "index_spaceships_on_fleet_id"
     t.index ["owned_by_id"], name: "index_spaceships_on_owned_by_id"
-    t.index ["ship_class"], name: "index_spaceships_on_ship_class"
   end
 
   create_table "systems", force: :cascade do |t|
@@ -94,6 +92,7 @@ ActiveRecord::Schema.define(version: 2021_05_15_120756) do
     t.float "luminosity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_systems_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|
