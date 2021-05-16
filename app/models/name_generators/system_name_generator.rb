@@ -16,7 +16,7 @@ module NameGenerators
     def letters_and_digits
       [
         LETTERS.sample((3..5).to_a.sample).join(""),
-        NUMBERS.sample((2..6).to_a.sample).join("")
+        NUMBERS.sample((5..7).to_a.sample).join("")
       ].join("-")
     end
   end
