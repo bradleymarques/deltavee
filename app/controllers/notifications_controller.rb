@@ -1,4 +1,4 @@
-class NotificationsController < RestrictedAccessController
+class NotificationsController < PlayerController
   def inbox
     @notifications = policy_scope(
       Notification,

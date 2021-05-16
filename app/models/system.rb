@@ -2,6 +2,7 @@
 # Models a solar system with Stars, Planets, etc.
 #
 class System < ApplicationRecord
+  SOL = "Sol".freeze
   MAX_NAME_LENGTH = 100
   MIN_NAME_LENGTH = 1
 

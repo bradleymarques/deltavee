@@ -1,13 +1,13 @@
 class FirstTimeUserSetup
   def initialize(user)
-    raise NotImplementedError
     @user = user
-    @sol = System.sol
+    @sol = System.find_by!(name: System::SOL)
   end
 
   def call
     send_user_welcome_notification
     setup_user_fleet
+    @user.update!(has_signed_in_at_least_once: true)
   end
 
   private

@@ -5,6 +5,8 @@ FactoryBot.define do
     password { "some-strong-password" }
     password_confirmation { "some-strong-password" }
     confirmed_at { 1.hour.ago }
+    has_signed_in_at_least_once { true }
+    role { 'player' }
 
     trait(:unconfirmed) do
       confirmed_at { nil }

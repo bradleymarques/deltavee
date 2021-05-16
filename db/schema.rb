@@ -114,6 +114,8 @@ ActiveRecord::Schema.define(version: 2021_05_15_120756) do
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
     t.datetime "locked_at"
+    t.boolean "has_signed_in_at_least_once", default: false
+    t.integer "role", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

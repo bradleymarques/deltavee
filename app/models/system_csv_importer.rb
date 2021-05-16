@@ -46,7 +46,7 @@ class SystemCsvImporter
 
     if system.valid?
       system.save!
-    else
+    elsif @show_progress
       puts "Error in importing row: #{row}. Errors: #{system.errors.full_messages.to_sentence}"
     end
   end
