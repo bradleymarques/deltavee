@@ -8,12 +8,16 @@ tr:hover {
   transition: $transition;
 }
 
-table.table tr td div.btn-group {
+table.table tr td .btn {
   opacity: 0;
   transition: $transition;
 }
 
-table.table tr:hover td div.btn-group {
+table.table tr:hover td .btn {
   opacity: 1;
   transition: $transition;
+}
+
+.table td {
+  vertical-align: middle;
 }
