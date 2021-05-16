@@ -71,5 +71,5 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
 
-      - name: Code coverage
-        uses: codecov/codecov-action@v1
+      # - name: Code coverage
+        # uses: codecov/codecov-action@v1
