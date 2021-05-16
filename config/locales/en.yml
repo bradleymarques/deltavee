@@ -20,7 +20,8 @@ en:
     home: "Home"
     dashboard: "Dashboard"
     map: "Universe Map"
-    notifications: "Email (%{count})"
+    notifications: "Email"
+    fleets: "Fleets"
   notifications:
     compose: "+ Compose"
     send: "Send"

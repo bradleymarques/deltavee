@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   get "notifications/inbox", to: "notifications#inbox", as: "inbox"
   get "notifications/outbox", to: "notifications#outbox", as: "outbox"
   resources :notifications, only: [:show, :new, :create]
+  resources :systems, only: [:show]
+
+  resources :fleets, only: [:index, :show]
 
   root to: "pages#home"
 end

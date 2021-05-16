@@ -1,4 +1,5 @@
-.container.align-items-center
-  = render(partial: "notifications/notifications_table", locals: { notifications: @notifications })
+= render(partial: "notifications/notifications_table", locals: { notifications: @notifications })
+
+== render(partial: 'pagy/bootstrap_nav', locals: { pagy: @pagy })
 
 = render(partial: "notifications/compose_button")

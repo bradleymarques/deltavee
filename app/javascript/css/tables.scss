@@ -1,0 +1,19 @@
+tr {
+  background-color: rgba($primary, 0);
+  transition: $transition;
+}
+
+tr:hover {
+  background-color: rgba($primary, 0.2);
+  transition: $transition;
+}
+
+table.table tr td div.btn-group {
+  opacity: 0;
+  transition: $transition;
+}
+
+table.table tr:hover td div.btn-group {
+  opacity: 1;
+  transition: $transition;
+}

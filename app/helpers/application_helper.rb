@@ -1,6 +1,8 @@
 module ApplicationHelper
-  def notification_count(user)
-    user.received_notifications.count
+  include Pagy::Frontend
+
+  def unread_notification_count(user)
+    user.received_notifications.unread.count
   end
 
   def nav_link_klass(paths)

@@ -8,4 +8,6 @@ class Fleet < ApplicationRecord
   validates :name, presence: true, length: { minimum: MIN_NAME_LENGTH, maximum: MAX_NAME_LENGTH }
 
   has_many :spaceships
+
+  validates :spaceships, :length => { :minimum => 1 }
 end

@@ -1,0 +1,21 @@
+/ Locals
+/ fleets - a Collection of Fleet records
+/
+table.table
+  thead.bg-primary
+    th = "Name"
+    th = "Status"
+    th = "System"
+    th = "Ships"
+    th = "Actions"
+  - fleets.each do |fleet|
+    tr
+      td == Link::FleetLink.new(fleet)
+      td = "Idle"
+      td == Link::SystemLink.new(fleet.system)
+      td = fleet.spaceships.count
+      td
+        .btn-group
+          button.btn.btn-primary type="button" = "Left"
+          button.btn.btn-primary type="button" = "Middle"
+          button.btn.btn-primary type="button" = "Right"

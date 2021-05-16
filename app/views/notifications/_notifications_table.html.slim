@@ -1,11 +1,17 @@
 / Locals:
 / notifications - a collection of Notification records
 /
-.table.m-4
+table.table
+  thead.bg-primary
+    th = "Sender"
+    th = "Subject"
+    th = ""
   - notifications.each do |notification|
-    = link_to(notification_path(notification))
-      .row.notification-row.d-flex
-        .col
-          = notification.sender.username
-        .col
-          = notification.subject
+    tr
+      td = notification.sender.username
+      td = notification.subject
+      td
+        .btn-group
+          button.btn.btn-primary type="button" = "Left"
+          button.btn.btn-primary type="button" = "Middle"
+          button.btn.btn-primary type="button" = "Right"

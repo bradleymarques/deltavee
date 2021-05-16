@@ -1,21 +1,26 @@
 class NotificationsController < PlayerController
   def inbox
-    @notifications = policy_scope(
-      Notification,
-      policy_scope_class: ReceivedNotificationPolicy::Scope
+    @pagy, @notifications = pagy(
+      policy_scope(
+        Notification,
+        policy_scope_class: ReceivedNotificationPolicy::Scope
+      )
     )
   end
 
   def outbox
-    @notifications = policy_scope(
-      Notification,
-      policy_scope_class: SentNotificationPolicy::Scope
+    @pagy, @notifications = pagy(
+      policy_scope(
+        Notification,
+        policy_scope_class: SentNotificationPolicy::Scope
+      )
     )
   end
 
   def show
     @notification = Notification.find(params.require(:id))
     authorize(@notification)
+    @notification.update!(read: true)
   end
 
   def new

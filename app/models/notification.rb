@@ -5,4 +5,6 @@ class Notification < ApplicationRecord
   belongs_to :recipient, class_name: User.name, required: true
 
   validates_inclusion_of :read, in: [true, false]
+
+  scope :unread, -> { where(read: false) }
 end

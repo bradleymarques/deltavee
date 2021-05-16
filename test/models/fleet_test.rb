@@ -14,4 +14,10 @@ class FleetTest < ActiveSupport::TestCase
     assert(fleet.valid?, fleet.errors.full_messages.to_sentence)
     assert(fleet.persisted?)
   end
+
+  test "a fleet without any spaceships is invalid" do
+    fleet = FactoryBot.build(:fleet)
+    fleet.spaceships = []
+    refute(fleet.valid?)
+  end
 end
