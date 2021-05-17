@@ -3,17 +3,15 @@
 /
 table.table
   thead
-    th = "Sender"
-    th = "Subject"
-    th.d-none.d-lg-block = "Preview"
-    th = "Actions"
+    th = t("notifications.sender")
+    th = t("notifications.subject")
+    th.d-none.d-lg-block = t("notifications.preview")
+    th = t("actions")
   - notifications.each do |notification|
     tr
-      td class=notification.link_klass = notification.sender.username
-      td == Link::NotificationLink.new(notification, options: { class: notification.link_klass })
-      td.d-none.d-lg-table-cell
-        div class=notification.link_klass
-          = notification.snippet
+      td = notification.sender.username
+      td == Link::NotificationLink.new(notification)
+      td.d-none.d-lg-table-cell = notification.snippet
       td
         .btn-group
           = link_to(notification_path(notification), class: "btn btn-primary", type: "button") do

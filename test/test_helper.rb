@@ -38,7 +38,6 @@ module Test
   end
 end
 
-
 module ActionDispatch
   class IntegrationTest
     def login_as(user:)
@@ -51,6 +50,21 @@ module ActionDispatch
 
       post(user_session_path, params: params)
     end
+  end
+end
+
+class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
+  def login_as(user:)
+    visit(root_url)
+    login_buttons = page.find_all("a", text: I18n.t("navigation.login"))
+    login_buttons.first.click
+
+    fill_in("Username", with: user.username)
+    fill_in("Password", with: "some-strong-password")
+
+    find('input[name="commit"]').click
+
+    assert(has_text?(I18n.t("devise.sessions.signed_in")))
   end
 end
 
