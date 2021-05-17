@@ -18,6 +18,7 @@ en:
   home:
     app_description: "An all-inclusive dashboard for your extra-terrestrial adventures"
   navigation:
+    back: "Back"
     about: "About"
     login: "Log in"
     login_long: "Commander Login"
@@ -30,6 +31,8 @@ en:
     notifications: "Email"
     fleets: "Fleets"
   notifications:
+    inbox: "Inbox"
+    outbox: "Outbox"
     compose: "+ Compose"
     send: "Send"
     sent: "Sent"

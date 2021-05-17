@@ -11,12 +11,14 @@ class NotificationsController < PlayerController
   end
 
   def outbox
-    @pagy, @notifications = pagy(
+    @pagy, notification_records = pagy(
       policy_scope(
         Notification,
         policy_scope_class: SentNotificationPolicy::Scope
       )
     )
+
+    @notifications = SentNotificationPresenter.collection(notification_records)
   end
 
   def show

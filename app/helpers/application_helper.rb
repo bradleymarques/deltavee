@@ -1,6 +1,10 @@
 module ApplicationHelper
   include Pagy::Frontend
 
+  def back_button(path)
+    link_to(t("navigation.back"), path, class: "btn btn-secondary")
+  end
+
   def unread_notification_count(user)
     user.received_notifications.unread.count
   end
