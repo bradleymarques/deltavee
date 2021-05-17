@@ -12,7 +12,7 @@ table.table
     tr
       td == Link::FleetLink.new(fleet)
       td = "Idle"
-      td == Link::SystemLink.new(fleet.system)
+      td = fleet.system.name
       td = fleet.spaceships.count
       td
         .btn-group

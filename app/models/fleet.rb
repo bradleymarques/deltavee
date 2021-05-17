@@ -9,5 +9,5 @@ class Fleet < ApplicationRecord
 
   has_many :spaceships
 
-  validates :spaceships, :length => { :minimum => 1 }
+  validates :spaceships, length: { minimum: 1 }
 end
