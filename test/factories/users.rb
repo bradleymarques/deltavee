@@ -24,7 +24,7 @@ FactoryBot.define do
       after(:build) do |instance|
         instance.received_notifications = FactoryBot.create_list(
           :notification,
-          20,
+          5,
           recipient: instance
         )
       end
