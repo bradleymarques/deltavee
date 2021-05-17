@@ -7,7 +7,7 @@ table.table
     th = "Status"
     th = "System"
     th = "Ships"
-    th = "Actions"
+    th = ""
   - fleets.each do |fleet|
     tr
       td == Link::FleetLink.new(fleet)
@@ -16,6 +16,4 @@ table.table
       td = fleet.spaceships.count
       td
         .btn-group
-          button.btn.btn-primary type="button" = "Left"
-          button.btn.btn-primary type="button" = "Middle"
-          button.btn.btn-primary type="button" = "Right"
+          button.btn.btn-primary type="button" = t("actions.view")

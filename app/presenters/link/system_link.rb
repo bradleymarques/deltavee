@@ -1,7 +1,11 @@
 module Link
-  class SystemLink < BasePresenter
-    def to_s
-      h.link_to(name, system_path(model))
+  class SystemLink < BaseLink
+    def text
+      name.truncate(40)
+    end
+
+    def path
+      system_path(model)
     end
   end
 end

@@ -1,11 +1,13 @@
 class NotificationsController < PlayerController
   def inbox
-    @pagy, @notifications = pagy(
+    @pagy, notification_records = pagy(
       policy_scope(
         Notification,
         policy_scope_class: ReceivedNotificationPolicy::Scope
       )
     )
+
+    @notifications = ReceivedNotificationPresenter.collection(notification_records)
   end
 
   def outbox
@@ -20,7 +22,7 @@ class NotificationsController < PlayerController
   def show
     @notification = Notification.find(params.require(:id))
     authorize(@notification)
-    @notification.update!(read: true)
+    @notification.update!(read: true) if current_user == @notification.recipient
   end
 
   def new

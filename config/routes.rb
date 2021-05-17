@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get "notifications/outbox", to: "notifications#outbox", as: "outbox"
   resources :notifications, only: [:show, :new, :create]
   resources :systems, only: [:show]
+  resources :users, only: [:show]
 
   resources :fleets, only: [:index, :show]
 

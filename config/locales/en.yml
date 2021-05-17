@@ -2,6 +2,13 @@ en:
   app:
     app_name: "ΔV"
     app_name_long: "DeltaVee"
+  actions:
+    common:
+      view: "View"
+      delete: "Delete"
+    notifications:
+      mark_as_read: "Mark as read"
+      mark_as_unread: "Mark as unread"
   about:
     what_the_heck_is_this: "What the heck is this?"
     long_description_one: "ΔV (DeltaVee) is a sci-fi role-playing video game, built using web development technology.  It is designed to be an \"In-Character\" (IC) role-playing simulation of a futuristic spaceship and space colony management software."
@@ -34,6 +41,3 @@ en:
     notification:
       subject: "Subject"
       content: "Content"
-  ships:
-    scout: "Scout"
-    miner: "Miner"

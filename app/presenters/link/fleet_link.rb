@@ -1,7 +1,11 @@
 module Link
-  class FleetLink < BasePresenter
-    def to_s
-      h.link_to(name, fleet_path(model))
+  class FleetLink < BaseLink
+    def text
+      name.truncate(40)
+    end
+
+    def path
+      fleet_path(model)
     end
   end
 end

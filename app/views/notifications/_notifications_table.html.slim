@@ -1,17 +1,33 @@
 / Locals
-/ notifications - a Collection of Notification records
+/ notifications - a Collection of Notification presenters
 /
 table.table
   thead.bg-primary
     th = "Sender"
     th = "Subject"
-    th = ""
+    th.d-none.d-lg-block = "Preview"
+    th = "Actions"
   - notifications.each do |notification|
     tr
-      td = notification.sender.username
-      td = notification.subject
+      td == Link::UserLink.new(notification.sender, options: { class: notification.link_klass })
+      td == Link::NotificationLink.new(notification, options: { class: notification.link_klass })
+      td.d-none.d-lg-table-cell
+        = notification.snippet
       td
         .btn-group
-          button.btn.btn-primary type="button" = "Left"
-          button.btn.btn-primary type="button" = "Middle"
-          button.btn.btn-primary type="button" = "Right"
+          = link_to(notification_path(notification), class: "btn btn-primary", type: "button") do
+            i.far.fa-eye
+            span.d-none.d-md-inline =<> t("actions.common.view")
+
+          - if notification.read?
+            = button_tag(class: "btn btn-secondary", type: "button") do
+              i.far.fa-envelope
+              span.d-none.d-md-inline =<> t("actions.notification.mark_as_undread")
+          - else
+            = button_tag(class: "btn btn-secondary", type: "button") do
+              i.far.fa-envelope-open
+              span.d-none.d-md-inline =<> t("actions.notification.mark_as_read")
+
+          = button_tag(class: "btn btn-danger", type: "button") do
+            i.far.fa-times-circle
+            span.d-none.d-md-inline =<> t("actions.common.delete")
