@@ -7,6 +7,10 @@
   transition: $transition;
 }
 
+.nav-link.active {
+  background-color: lighten($primary, 10%);
+}
+
 .sticky-offset {
   top: 36px;
 }

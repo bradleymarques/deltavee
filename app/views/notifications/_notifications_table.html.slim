@@ -19,16 +19,3 @@ table.table
           = link_to(notification_path(notification), class: "btn btn-primary", type: "button") do
             i.far.fa-eye
             span.d-none.d-md-inline =<> t("actions.common.view")
-
-          - if notification.read?
-            = button_tag(class: "btn btn-secondary", type: "button") do
-              i.far.fa-envelope
-              span.d-none.d-md-inline =<> t("actions.notification.mark_as_undread")
-          - else
-            = button_tag(class: "btn btn-secondary", type: "button") do
-              i.far.fa-envelope-open
-              span.d-none.d-md-inline =<> t("actions.notification.mark_as_read")
-
-          / = button_tag(class: "btn btn-danger", type: "button") do
-          /   i.far.fa-times-circle
-          /   span.d-none.d-md-inline =<> t("actions.common.delete")

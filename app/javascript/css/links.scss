@@ -15,8 +15,3 @@ a:hover {
   color: rgba($white, 0.75);
   background-color: lighten($primary, 10%);
 }
-
-.nav-link.active {
-  background-color: lighten($primary, 10%);
-  border-bottom: 1px solid $white;
-}

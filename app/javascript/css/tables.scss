@@ -1,10 +1,10 @@
 tr {
-  background-color: rgba($primary, 0);
+  background-color: rgba($white, 0);
   transition: $transition;
 }
 
 tr:hover {
-  background-color: rgba($primary, 0.2);
+  background-color: rgba($white, 0.1);
   transition: $transition;
 }
 
