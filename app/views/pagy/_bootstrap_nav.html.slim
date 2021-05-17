@@ -22,11 +22,11 @@ nav.pagy-bootstrap-nav role="navigation" aria-label="pager"
         li.page-item.active == link.call(item)
 
       - elsif item == :gap                       # page gap
-        li.page-item.disabled.gap
+        li.page-item.disabled.gap.bg-dark
           a.page-link href="#" == pagy_t('pagy.nav.gap')
 
     - if pagy.next
       li.page-item.next == link.call(pagy.next, pagy_t('pagy.nav.next'), 'aria-label="next"')
     - else
-      li.page-item.next.disabled
+      li.page-item.next.disabled.bg-dark
         a.page-link href="#" == pagy_t('pagy.nav.next')
