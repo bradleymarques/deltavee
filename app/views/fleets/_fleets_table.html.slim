@@ -7,7 +7,7 @@ table.table
     th = "Status"
     th = "System"
     th = "Ships"
-    th = ""
+    th = t("actions.common.actions")
   - fleets.each do |fleet|
     tr
       td == Link::FleetLink.new(fleet)

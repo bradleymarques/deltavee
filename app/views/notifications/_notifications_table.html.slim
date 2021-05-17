@@ -6,7 +6,7 @@ table.table
     th = t("notifications.sender")
     th = t("notifications.subject")
     th.d-none.d-lg-block = t("notifications.preview")
-    th = t("actions")
+    th = t("actions.common.actions")
   - notifications.each do |notification|
     tr
       td = notification.sender.username

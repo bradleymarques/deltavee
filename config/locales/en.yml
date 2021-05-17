@@ -4,6 +4,7 @@ en:
     app_name_long: "DeltaVee"
   actions:
     common:
+      actions: "Actions"
       view: "View"
   about:
     what_the_heck_is_this: "What the heck is this?"
