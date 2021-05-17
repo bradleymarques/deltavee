@@ -10,3 +10,7 @@
 .sticky-offset {
   top: 36px;
 }
+
+.sidebar {
+  min-height: calc(100vh - 36px);
+}

@@ -1,6 +1,6 @@
 class ReceivedNotificationPresenter < BasePresenter
   def link_klass
-    read? ? "link-secondary" : "link-primary fw-bold"
+    read? ? "text-muted" : "fw-bold"
   end
 
   def snippet
