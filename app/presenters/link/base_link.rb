@@ -7,13 +7,9 @@ module Link
       @options = options
     end
 
-    def text
-      model.class.name
-    end
+    def text; end # Override in child classes
 
-    def path
-      root_path
-    end
+    def path; end # Override in child classes
 
     def to_s
       h.link_to(text, path, @options)

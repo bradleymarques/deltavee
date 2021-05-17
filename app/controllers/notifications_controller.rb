@@ -7,7 +7,7 @@ class NotificationsController < PlayerController
       )
     )
 
-    @notifications = ReceivedNotificationPresenter.collection(notification_records)
+    @notifications = NotificationPresenter.collection(notification_records)
   end
 
   def outbox
@@ -18,7 +18,7 @@ class NotificationsController < PlayerController
       )
     )
 
-    @notifications = SentNotificationPresenter.collection(notification_records)
+    @notifications = NotificationPresenter.collection(notification_records)
   end
 
   def show
