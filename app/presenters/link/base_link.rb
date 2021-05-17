@@ -1,5 +1,7 @@
 module Link
   class BaseLink < ::BasePresenter
+    MAX_LENGTH = 40
+
     def initialize(model, options: {})
       super(model)
       @options = options

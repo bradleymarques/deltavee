@@ -1,7 +1,6 @@
 require "test_helper"
 
 class ApplicationPolicyTest < ActiveSupport::TestCase
-
   test "by default a user cannot do anything to a record" do
     record = System.new
     user = User.new

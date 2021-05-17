@@ -1,7 +1,7 @@
 module Link
   class FleetLink < BaseLink
     def text
-      name.truncate(40)
+      name.truncate(Link::BaseLink::MAX_LENGTH)
     end
 
     def path
