@@ -16,4 +16,4 @@ table.table
       td = fleet.spaceships.count
       td
         .btn-group
-          button.btn.btn-primary type="button" = t("actions.view")
+          = link_to(t("actions.view"), fleet_path(fleet), class: "btn btn-primary")

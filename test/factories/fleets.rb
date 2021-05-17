@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :fleet do
-    name { "Fleet" }
+    name { Faker::Lorem.word }
     owned_by { FactoryBot.create(:user) }
     system { FactoryBot.create(:system) }
 

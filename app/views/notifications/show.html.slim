@@ -1,11 +1,13 @@
-= back_button(inbox_path)
-
 .container-fluid
-  .row.m-4
-    h2 = @notification.subject
+  .row
+    = render(partial: "notifications/notifications_sidenav")
 
-  .row.m-4
-    h4.text-primary= @notification.sender.username
+    main.col-md-10.ml-sm-auto.m-0.p-0
+      = back_button(inbox_path)
 
-  .row.m-4
-    == @notification.content
+      .row.m-4
+        h2 = @notification.subject
+      .row.m-4
+        h4.text-primary= @notification.sender.username
+      .row.m-4
+        == @notification.content
