@@ -1,7 +1,7 @@
 require "test_helper"
 require "application_system_test_case"
 
-class UsersTest < ApplicationSystemTestCase
+class NotificationsTest < ApplicationSystemTestCase
   setup do
     @user = FactoryBot.create(:user)
     @mail_a = FactoryBot.create(
