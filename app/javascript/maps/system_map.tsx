@@ -1,25 +1,8 @@
 import * as React from "react";
 import { Canvas, useThree } from "@react-three/fiber";
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 import System from "maps/system";
-
-const CameraController = () => {
-  const { camera, gl } = useThree();
-  React.useEffect(
-    () => {
-      const controls = new OrbitControls(camera, gl.domElement);
-
-      controls.minDistance = 3;
-      controls.maxDistance = 20;
-      return () => {
-        controls.dispose();
-      };
-    },
-    [camera, gl]
-  );
-  return null;
-};
+import CameraController from "maps/camera_controller";
 
 interface SystemMapProps {
   url: string;
