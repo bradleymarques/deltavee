@@ -3,7 +3,7 @@ class SystemMapsController < PlayerController
     respond_to do |format|
       format.json do
         systems = policy_scope(System)
-        render(status: :ok, json: SystemMapSerializer.new(systems))
+        render(status: :ok, json: SystemMapSerializer.new(systems).to_h)
       end
     end
   end

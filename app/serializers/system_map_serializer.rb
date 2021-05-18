@@ -5,7 +5,7 @@ class SystemMapSerializer
 
   def to_h
     {
-      systems: @systems.map { |system| serialize(system) }.reduce(),
+      system_data: @systems.map { |system| serialize(system) },
       meta: {
         total: @systems.count
       }
@@ -16,6 +16,7 @@ class SystemMapSerializer
 
   def serialize(system)
     {
+      id: system.id,
       name: system.name,
       x: system.x,
       y: system.y,
