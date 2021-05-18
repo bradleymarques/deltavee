@@ -15,6 +15,7 @@ en:
   home:
     app_description: "An all-inclusive dashboard for your extra-terrestrial adventures"
   navigation:
+    universe_map: "Maps"
     back: "Back"
     about: "About"
     login: "Log in"

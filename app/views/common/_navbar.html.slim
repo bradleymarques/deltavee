@@ -10,6 +10,10 @@ nav.navbar.navbar-expand-md.navbar-dark.bg-primary.p-0.sticky-top
         li.nav-item
           = link_to(t("navigation.dashboard"), dashboard_path, class: nav_link_klass([dashboard_path]))
 
+        // DASHBOARD
+        li.nav-item
+          = link_to(t("navigation.universe_map"), universe_maps_path, class: nav_link_klass([universe_maps_path]))
+
         // FLEETS
         li.nav-item
           = link_to(t("navigation.fleets"), fleets_path, class: nav_link_klass([fleets_path]))

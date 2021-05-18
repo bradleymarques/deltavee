@@ -1,5 +1,4 @@
-class PlayerController < ApplicationController
-  before_action :authenticate_user!
+class PlayerController < RestrictedAccessController
   before_action :authenticate_player!
 
   private

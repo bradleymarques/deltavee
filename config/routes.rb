@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   resources :systems, only: [:show]
   resources :users, only: [:show]
 
+  resources :universe_maps, only: [:index]
+  resources :maps, only: [:index]
+
   resources :fleets, only: [:index, :show]
 
   root to: "pages#home"
