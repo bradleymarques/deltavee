@@ -44,10 +44,12 @@ systems <-
     dist = dist
   )
 
-write.csv2(systems,
+write.table(systems,
+           sep = ";",
            file = "~/deltavee/data/systems.csv",
            row.names = FALSE,
-           na = "")
+           na = "",
+           dec = ".")
 
 # (Optional) Visualize a sample of the data
 require(plotly)
