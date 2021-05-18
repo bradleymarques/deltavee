@@ -1,11 +1,18 @@
 import * as React from "react";
-import { Canvas, useThree } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 
-import System from "maps/system";
 import CameraController from "maps/camera_controller";
+import System from "maps/system";
 
 interface SystemMapProps {
   url: string;
+}
+
+interface SystemDatum {
+  name: string;
+  x: number;
+  y: number;
+  z: number;
 }
 
 const SystemMap: React.FC<SystemMapProps> = (props) => {
@@ -38,8 +45,8 @@ const SystemMap: React.FC<SystemMapProps> = (props) => {
       <Canvas>
         <CameraController />
         <ambientLight />
-          {systemData.map(systemDatum => {
-            return <System key={systemDatum.id} {...systemDatum} />;
+          {systemData.map((systemDatum: SystemDatum) => {
+            return <System key = {systemDatum.name} {...systemDatum} />
           })}
       </Canvas>
     );

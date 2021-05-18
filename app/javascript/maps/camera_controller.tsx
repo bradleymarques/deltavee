@@ -10,6 +10,8 @@ const CameraController = () => {
 
       controls.minDistance = 3;
       controls.maxDistance = 20;
+      controls.enablePan = false;
+
       return () => {
         controls.dispose();
       };
