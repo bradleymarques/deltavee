@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
 
   resources :universe_maps, only: [:index]
-  resources :maps, only: [:index]
+  resources :system_maps, only: [:index]
 
   resources :fleets, only: [:index, :show]
 

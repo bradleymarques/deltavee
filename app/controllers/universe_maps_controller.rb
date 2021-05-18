@@ -1,5 +1,5 @@
 class UniverseMapsController < PlayerController
   def index
-    @map_url = maps_path
+    @map_url = system_maps_path(format: :json)
   end
 end
