@@ -1,0 +1,23 @@
+tr {
+  background-color: rgba($white, 0);
+  transition: $transition;
+}
+
+tr:hover {
+  background-color: rgba($white, 0.1);
+  transition: $transition;
+}
+
+table.table tr td .btn {
+  opacity: 0;
+  transition: $transition;
+}
+
+table.table tr:hover td .btn {
+  opacity: 1;
+  transition: $transition;
+}
+
+.table td {
+  vertical-align: middle;
+}

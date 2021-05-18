@@ -1,14 +1,12 @@
-ENV["RAILS_ENV"] ||= "test"
 require "simplecov"
-SimpleCov.start do
-  add_filter "test/"
-  add_filter "**/*_test.rb"
+SimpleCov.start("rails") do
+  add_filter("app/channels/application_cable/channel.rb")
+  add_filter("app/channels/application_cable/connection.rb")
+  add_filter("app/jobs/application_job.rb")
+  add_filter("app/mailers/application_mailer.rb")
 end
 
-if ENV["CI"] == "true"
-  require "codecov"
-  SimpleCov.formatter = SimpleCov::Formatter::Codecov
-end
+ENV["RAILS_ENV"] ||= "test"
 
 require_relative "../config/environment"
 require "rails/test_help"
@@ -22,7 +20,8 @@ require "mocha/minitest"
 module ActiveSupport
   class TestCase
     # Run tests in parallel with specified workers
-    parallelize(workers: :number_of_processors)
+    # This is commented out as it causes SimpleCov not to function correctly
+    # parallelize(workers: :number_of_processors)
 
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
@@ -39,7 +38,6 @@ module Test
   end
 end
 
-
 module ActionDispatch
   class IntegrationTest
     def login_as(user:)
@@ -52,6 +50,21 @@ module ActionDispatch
 
       post(user_session_path, params: params)
     end
+  end
+end
+
+class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
+  def login_as(user:)
+    visit(root_url)
+    login_buttons = page.find_all("a", text: I18n.t("navigation.login"))
+    login_buttons.first.click
+
+    fill_in("Username", with: user.username)
+    fill_in("Password", with: "some-strong-password")
+
+    find('input[name="commit"]').click
+
+    assert(has_text?(I18n.t("devise.sessions.signed_in")))
   end
 end
 

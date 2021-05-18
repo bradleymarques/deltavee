@@ -84,4 +84,31 @@ class SystemCsvImporterTest < ActiveSupport::TestCase
     assert(names[3].present?)
     refute(names[3].empty?)
   end
+
+  test "#import skips systems that fail for whatever reason" do
+    filename = Rails.root.join("test", "fixtures", "files", "two_suns_in_the_sunset.csv")
+    importer = SystemCsvImporter.new(filename: filename)
+
+    assert_difference("System.count", 1) do
+      importer.import
+    end
+  end
+
+  test "#import strips and cleans up names" do
+    filename = Rails.root.join("test", "fixtures", "files", "bad_names.csv")
+    importer = SystemCsvImporter.new(filename: filename)
+
+    assert_difference("System.count", 3) do
+      importer.import
+    end
+
+    names = System.order(:created_at).map(&:name)
+    expected_names = [
+      "A B",
+      "C D",
+      "E F"
+    ]
+
+    assert_equal(expected_names, names)
+  end
 end

@@ -1,4 +1,4 @@
-class DashboardsController < RestrictedAccessController
+class DashboardsController < PlayerController
   def show
   end
 end

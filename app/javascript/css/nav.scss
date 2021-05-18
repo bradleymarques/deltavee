@@ -6,3 +6,15 @@
   color: $gray-500;
   transition: $transition;
 }
+
+.nav-link.active {
+  background-color: lighten($primary, 10%);
+}
+
+.sticky-offset {
+  top: 36px;
+}
+
+.sidebar {
+  min-height: calc(100vh - 36px);
+}

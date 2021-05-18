@@ -1,17 +1,5 @@
-.notification-row {
-  color: darken($white, 20%);
-  background-color: $dark;
-  transition: $transition;
-}
-
-.notification-row:hover {
-  color: $white;
-  background-color: lighten($dark, 20%);
-  transition: $transition;
-}
-
 .compose-notification-button {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 0;
 }

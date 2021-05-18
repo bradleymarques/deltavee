@@ -5,6 +5,8 @@ FactoryBot.define do
     password { "some-strong-password" }
     password_confirmation { "some-strong-password" }
     confirmed_at { 1.hour.ago }
+    has_signed_in_at_least_once { true }
+    role { 'player' }
 
     trait(:unconfirmed) do
       confirmed_at { nil }
@@ -22,7 +24,7 @@ FactoryBot.define do
       after(:build) do |instance|
         instance.received_notifications = FactoryBot.create_list(
           :notification,
-          10,
+          5,
           recipient: instance
         )
       end

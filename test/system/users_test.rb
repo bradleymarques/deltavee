@@ -2,6 +2,10 @@ require "test_helper"
 require "application_system_test_case"
 
 class UsersTest < ApplicationSystemTestCase
+  setup do
+    # Ensure no users are logged in
+  end
+
   test "a user can visit the root URL, click register and create an account" do
     visit(root_url)
     register_buttons = page.find_all("a", text: I18n.t("navigation.register"))
@@ -217,5 +221,45 @@ class UsersTest < ApplicationSystemTestCase
     click_on("Resend unlock instructions")
 
     assert(has_text?(I18n.t("devise.unlocks.send_paranoid_instructions")))
+  end
+
+  test "a user logging in for the very first time is taken through the
+        FirstTimeUserSetup" do
+    FactoryBot.create(:system, :sol)
+    user = FactoryBot.create(:user, has_signed_in_at_least_once: false)
+    FirstTimeUserSetup.any_instance.expects(:call)
+
+    visit(root_url)
+    login_buttons = page.find_all("a", text: I18n.t("navigation.login"))
+    login_buttons.first.click
+
+    assert_selector("h1", text: I18n.t("navigation.login_long"))
+
+    fill_in("Username", with: user.username)
+    fill_in("Password", with: "some-strong-password")
+
+    find('input[name="commit"]').click
+
+    assert(has_text?(I18n.t("devise.sessions.signed_in")))
+  end
+
+  test "a user logging in on subsequent times is not taken through the
+        FirstTimeUserSetup" do
+    FactoryBot.create(:system, :sol)
+    user = FactoryBot.create(:user, has_signed_in_at_least_once: true)
+    FirstTimeUserSetup.any_instance.expects(:call).never
+
+    visit(root_url)
+    login_buttons = page.find_all("a", text: I18n.t("navigation.login"))
+    login_buttons.first.click
+
+    assert_selector("h1", text: I18n.t("navigation.login_long"))
+
+    fill_in("Username", with: user.username)
+    fill_in("Password", with: "some-strong-password")
+
+    find('input[name="commit"]').click
+
+    assert(has_text?(I18n.t("devise.sessions.signed_in")))
   end
 end

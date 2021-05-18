@@ -1,21 +1,30 @@
-class NotificationsController < RestrictedAccessController
+class NotificationsController < PlayerController
   def inbox
-    @notifications = policy_scope(
-      Notification,
-      policy_scope_class: ReceivedNotificationPolicy::Scope
+    @pagy, notification_records = pagy(
+      policy_scope(
+        Notification,
+        policy_scope_class: ReceivedNotificationPolicy::Scope
+      )
     )
+
+    @notifications = NotificationPresenter.collection(notification_records)
   end
 
   def outbox
-    @notifications = policy_scope(
-      Notification,
-      policy_scope_class: SentNotificationPolicy::Scope
+    @pagy, notification_records = pagy(
+      policy_scope(
+        Notification,
+        policy_scope_class: SentNotificationPolicy::Scope
+      )
     )
+
+    @notifications = NotificationPresenter.collection(notification_records)
   end
 
   def show
     @notification = Notification.find(params.require(:id))
     authorize(@notification)
+    @notification.update!(read: true) if current_user == @notification.recipient
   end
 
   def new

@@ -1,11 +1,19 @@
-/ Locals:
-/ notifications - a collection of Notification records
+/ Locals
+/ notifications - a Collection of Notification presenters
 /
-.table.m-4
+table.table
+  thead
+    th = t("notifications.sender")
+    th = t("notifications.subject")
+    th.d-none.d-lg-block = t("notifications.preview")
+    th = t("actions.common.actions")
   - notifications.each do |notification|
-    = link_to(notification_path(notification))
-      .row.notification-row.d-flex
-        .col
-          = notification.sender.username
-        .col
-          = notification.subject
+    tr
+      td = notification.sender.username
+      td == Link::NotificationLink.new(notification)
+      td.d-none.d-lg-table-cell = notification.snippet
+      td
+        .btn-group
+          = link_to(notification_path(notification), class: "btn btn-primary", type: "button") do
+            i.far.fa-eye
+            span.d-none.d-md-inline =<> t("actions.common.view")

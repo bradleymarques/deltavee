@@ -23,6 +23,6 @@ class UserTest < ActiveSupport::TestCase
     )
 
     assert_equal(1, user.sent_notifications.size)
-    assert_equal(10, user.received_notifications.size)
+    assert_equal(5, user.received_notifications.size)
   end
 end

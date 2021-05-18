@@ -1,4 +1,4 @@
-class SystemDataController < RestrictedAccessController
+class SystemDataController < PlayerController
   def index
     respond_to do |format|
       format.json do

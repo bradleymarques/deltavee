@@ -1,17 +1,27 @@
-nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.p-0.sticky-top
+nav.navbar.navbar-expand-md.navbar-dark.bg-primary.p-0.sticky-top
   .container-fluid
-    = link_to(t("app.app_name"), "#", class: "navbar-brand")
+    .navbar-brand = t("app.app_name")
     button.navbar-toggler type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation"
       span.navbar-toggler-icon
     #navbarToggler.collapse.navbar-collapse
       // Left-side navbar menus
       ul.navbar-nav.me-auto.mb-2.mb-lg-0
+        // DASHBOARD
         li.nav-item
           = link_to(t("navigation.dashboard"), dashboard_path, class: nav_link_klass([dashboard_path]))
+
+        // FLEETS
         li.nav-item
-          = link_to(t("navigation.map"), map_path, class: nav_link_klass([map_path]))
+          = link_to(t("navigation.fleets"), fleets_path, class: nav_link_klass([fleets_path]))
+
+        // EMAIL (X)
         li.nav-item
-          = link_to(t("navigation.notifications", count: notification_count(current_user)), inbox_path, class: nav_link_klass([inbox_path, outbox_path, new_notification_path]))
+          = link_to(inbox_path, class: nav_link_klass([inbox_path, outbox_path, new_notification_path])) do
+            =<> t("navigation.notifications")
+            - if unread_notification_count(current_user) != 0
+              span.badge.bg-danger
+                = unread_notification_count(current_user)
+
         / li.nav-item
         /   = link_to("Link 3", "#", class: "nav-link")
         / li.nav-item.dropdown
@@ -32,8 +42,8 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.p-0.sticky-top
           li.nav-item.dropdown
             = link_to(current_user.username, "#", id: "profileNavbarDropdown", class: "nav-link dropdown-toggle", role: "button", "data-bs-toggle": "dropdown", "aria-expanded": false)
             ul.dropdown-menu.dropdown-menu-end.bg-primary aria-labelledby="profileNavbarDropdown"
-              li = link_to("Profile link 1", "#", class: "dropdown-item")
-              li = link_to("Profile link 2", "#", class: "dropdown-item")
-              li
-                hr.dropdown-divider
               li = link_to(t("navigation.logout"), destroy_user_session_path, class: "dropdown-item", method: :delete)
+              / li = link_to("Profile link 1", "#", class: "dropdown-item")
+              / li = link_to("Profile link 2", "#", class: "dropdown-item")
+              / li
+              /   hr.dropdown-divider

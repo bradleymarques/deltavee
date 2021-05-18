@@ -1,0 +1,7 @@
+.container-fluid
+  .row
+    = render(partial: "fleets/fleets_sidenav")
+
+    main.col-md-10.ml-sm-auto.m-0.p-0
+      = render(partial: "fleets/fleets_table", locals: { fleets: @fleets })
+      == render(partial: 'pagy/bootstrap_nav', locals: { pagy: @pagy })

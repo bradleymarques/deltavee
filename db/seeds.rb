@@ -7,23 +7,30 @@ importer = SystemCsvImporter.new(
 
 importer.import
 
+# Create System User
+SystemUser.new.system_user
+
+# Create some other Users (Players)
 FactoryBot.create(
   :user,
-  username: "player_1",
+  username: "new_player",
+  password: "Asdf;lkj",
+  password_confirmation: "Asdf;lkj",
+  has_signed_in_at_least_once: false
+)
+
+old_player = FactoryBot.create(
+  :user,
+  :with_received_notifications,
+  :with_sent_notifications,
+  username: "old_player",
   password: "Asdf;lkj",
   password_confirmation: "Asdf;lkj"
 )
 
-FactoryBot.create(
-  :user,
-  username: "player_2",
-  password: "Asdf;lkj",
-  password_confirmation: "Asdf;lkj"
-)
+sol = System.find_by(name: "Sol")
 
-FactoryBot.create(
-  :user,
-  username: "player_3",
-  password: "Asdf;lkj",
-  password_confirmation: "Asdf;lkj"
-)
+FactoryBot.create(:fleet, owned_by: old_player, system: sol)
+FactoryBot.create(:fleet, owned_by: old_player, system: sol)
+FactoryBot.create(:fleet, owned_by: old_player, system: sol)
+FactoryBot.create(:fleet, owned_by: old_player, system: sol)
