@@ -12,26 +12,11 @@ interface SystemProps {
 }
 
 const System: React.FC<SystemProps> = (props) => {
-  const { texture, name, x, y, z, onClick } = props;
-
-  const [isSelected, setIsSelected] = React.useState(false);
+  const { texture, name, x, y, z } = props;
 
   return (
-    // <mesh
-    //   position={[x, y, z]}
-    //   onClick={(e) => setIsSelected(!isSelected) }
-    // >
-    //   <sphereGeometry args={[0.1, 5, 5]}/>
-    //   <meshStandardMaterial color={isSelected ? "white" : "gray"} />
-    //   { isSelected && <SystemTooltip name={name} />}
-    // </mesh>
-
-    <sprite
-      position={[x, y, z]}
-      onClick={(e) => setIsSelected(!isSelected) }
-    >
-      <spriteMaterial attach="material" map={texture} color={isSelected ? "white" : "gray"} />
-      { isSelected && <SystemTooltip name={name} />}
+    <sprite position={[x, y, z]} >
+      <spriteMaterial attach="material" map={texture} color={"gray"} />
     </sprite>
   );
 };
