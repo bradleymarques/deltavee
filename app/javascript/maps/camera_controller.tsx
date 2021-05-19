@@ -1,9 +1,15 @@
 import * as React from "react";
-import { useThree } from "@react-three/fiber";
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { Camera, WebGLRenderer } from "three";
 
-const CameraController = () => {
-  const { camera, gl } = useThree();
+interface CameraControllerProps {
+  camera: Camera;
+  gl: WebGLRenderer;
+}
+
+const CameraController: React.FC<CameraControllerProps> = (props) => {
+  const { camera, gl } = props;
+
   React.useEffect(
     () => {
       const controls = new OrbitControls(camera, gl.domElement);
