@@ -5,7 +5,7 @@ class UniverseMapsController < PlayerController
       x: 0,
       y: 0,
       z: 0,
-      radius: 25
+      radius: 10
     )
   end
 end
