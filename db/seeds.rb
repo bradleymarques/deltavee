@@ -1,7 +1,7 @@
 # Import Systems from CSV file
 importer = SystemCsvImporter.new(
   filename: Rails.root.join("data", "systems.csv"),
-  row_count: 1000,
+  row_count: :all,
   show_progress: true
 )
 
