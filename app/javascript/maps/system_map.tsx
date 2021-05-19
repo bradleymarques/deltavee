@@ -4,6 +4,12 @@ import { Canvas } from "@react-three/fiber";
 import CameraController from "maps/camera_controller";
 import System from "maps/system";
 
+import { TextureLoader } from "three";
+import StarImage from "../images/star.png";
+import { Stats } from "@react-three/drei";
+const loader = new TextureLoader();
+const texture = loader.load(StarImage);
+
 interface SystemMapProps {
   url: string;
 }
@@ -44,10 +50,10 @@ const SystemMap: React.FC<SystemMapProps> = (props) => {
     return (
       <Canvas>
         <CameraController />
-        <ambientLight />
           {systemData.map((systemDatum: SystemDatum) => {
-            return <System key = {systemDatum.name} {...systemDatum} />
+            return <System key={systemDatum.name} texture={texture} {...systemDatum} />
           })}
+        <Stats />
       </Canvas>
     );
   }
