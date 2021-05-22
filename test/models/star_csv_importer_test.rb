@@ -1,6 +1,6 @@
 require "test_helper"
 
-class SystemCsvImporterTest < ActiveSupport::TestCase
+class StarCsvImporterTest < ActiveSupport::TestCase
   test "passed a filename that does not exist raises an ArgumentError" do
     filename = Rails.root.join("test", "fixtures", "files", "this_does_not_exist.csv")
     assert_raises(ArgumentError) do

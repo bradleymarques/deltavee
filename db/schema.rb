@@ -46,16 +46,6 @@ ActiveRecord::Schema.define(version: 2021_05_15_120756) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "fleets", force: :cascade do |t|
-    t.string "name", null: false
-    t.bigint "system_id", null: false
-    t.bigint "owned_by_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["owned_by_id"], name: "index_fleets_on_owned_by_id"
-    t.index ["system_id"], name: "index_fleets_on_system_id"
-  end
-
   create_table "notifications", force: :cascade do |t|
     t.bigint "sender_id", null: false
     t.bigint "recipient_id", null: false
@@ -67,32 +57,39 @@ ActiveRecord::Schema.define(version: 2021_05_15_120756) do
     t.index ["sender_id"], name: "index_notifications_on_sender_id"
   end
 
-  create_table "spaceships", force: :cascade do |t|
-    t.string "name", null: false
-    t.bigint "fleet_id", null: false
-    t.bigint "owned_by_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["fleet_id"], name: "index_spaceships_on_fleet_id"
-    t.index ["owned_by_id"], name: "index_spaceships_on_owned_by_id"
-  end
-
-  create_table "systems", force: :cascade do |t|
-    t.string "name", null: false
+  create_table "stars", force: :cascade do |t|
+    t.string "proper_name"
+    t.integer "hyg_database_id"
+    t.integer "hipparcos_catalog_id"
+    t.integer "henry_draper_catalog_id"
+    t.integer "harvard_revised_catalog_id"
+    t.integer "gliese_catalog_id"
+    t.string "bayer_flamsteed_designation"
+    t.string "bayer_designation"
+    t.string "flamsteed_designation"
+    t.float "right_ascension", null: false
+    t.float "declination", null: false
+    t.float "distance_from_sol", null: false
     t.float "x", null: false
     t.float "y", null: false
     t.float "z", null: false
-    t.string "giliese_catalogue_name"
-    t.string "bayer_flamsteed_designation"
-    t.string "proper_name"
-    t.float "absolute_magnitude"
-    t.string "spectral_type"
-    t.float "colour_index"
+    t.float "velocity_x", null: false
+    t.float "velocity_y", null: false
+    t.float "velocity_z", null: false
     t.string "constellation"
-    t.float "luminosity"
+    t.float "visual_magnitude", null: false
+    t.float "absolute_magnitude", null: false
+    t.string "spectral_type", null: false
+    t.float "color_index", null: false
+    t.float "luminosity", null: false
+    t.float "temperature", null: false
+    t.float "peak_wavelength", null: false
+    t.string "hex_color", null: false
+    t.integer "red_color", null: false
+    t.integer "green_color", null: false
+    t.integer "blue_color", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["name"], name: "index_systems_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -126,8 +123,6 @@ ActiveRecord::Schema.define(version: 2021_05_15_120756) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "fleets", "users", column: "owned_by_id"
   add_foreign_key "notifications", "users", column: "recipient_id"
   add_foreign_key "notifications", "users", column: "sender_id"
-  add_foreign_key "spaceships", "users", column: "owned_by_id"
 end

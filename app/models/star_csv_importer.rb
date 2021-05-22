@@ -1,9 +1,9 @@
 require "csv"
 
 ##
-# Imports systems from a CSV (semi-colon delimited) file
+# Imports stars from a CSV (semi-colon delimited) file
 #
-class SystemCsvImporter
+class StarCsvImporter
   ALL = :all
 
   def initialize(filename:, row_count: ALL, show_progress: false)
@@ -14,13 +14,13 @@ class SystemCsvImporter
   end
 
   def import
-    puts("Importing systems from #{@filename}") if @show_progress
+    puts("Importing stars from #{@filename}") if @show_progress
 
     CSV.foreach(@filename, { col_sep: ";", headers: true }).with_index do |row, index|
       break if (@row_count != ALL) && (index >= @row_count)
 
       print("*") if @show_progress
-      import_system(row)
+      import_star(row)
     end
 
     puts(" Done!") if @show_progress
@@ -28,7 +28,7 @@ class SystemCsvImporter
 
   private
 
-  def import_system(row)
+  def import_star(row)
     system = System.new(
       name: clean(fetch_system_name(row)),
       x: clean(row["x"]),
