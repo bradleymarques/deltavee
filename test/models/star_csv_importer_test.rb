@@ -116,12 +116,12 @@ class StarCsvImporterTest < ActiveSupport::TestCase
     assert(Star.find_by(id: 1))
     assert_equal("Sol", Star.find_by(id: 1).proper_name)
 
-    refute(Star.find_by(id: 2))
+    refute(Star.find_by(id: 2)) # Is invalid in the CSV
 
     assert(Star.find_by(id: 3))
     assert_equal("Alp2Cen", Star.find_by(id: 3).bayer_flamsteed_designation)
 
-    refute(Star.find_by(id: 4))
-    refute(Star.find_by(id: 5))
+    refute(Star.find_by(id: 4)) # Is invalid in the CSV
+    refute(Star.find_by(id: 5)) # Is invalid in the CSV
   end
 end

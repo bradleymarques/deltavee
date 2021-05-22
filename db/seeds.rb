@@ -1,6 +1,6 @@
-# Import Systems from CSV file
-importer = SystemCsvImporter.new(
-  filename: Rails.root.join("data", "systems.csv"),
+# Import Stars from CSV file
+importer = StarCsvImporter.new(
+  filename: Rails.root.join("data", "stars.csv"),
   row_count: 10,
   show_progress: true
 )

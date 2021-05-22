@@ -5,10 +5,6 @@ module ApplicationHelper
     link_to(t("navigation.back"), path, class: "btn btn-secondary")
   end
 
-  def unread_notification_count(user)
-    user.received_notifications.unread.count
-  end
-
   def nav_link_klass(paths)
     if paths.any? { |path| current_page?(path) }
       "nav-link active"
