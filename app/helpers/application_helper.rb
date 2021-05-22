@@ -1,10 +1,6 @@
 module ApplicationHelper
   include Pagy::Frontend
 
-  def back_button(path)
-    link_to(t("navigation.back"), path, class: "btn btn-secondary")
-  end
-
   def nav_link_klass(paths)
     if paths.any? { |path| current_page?(path) }
       "nav-link active"
