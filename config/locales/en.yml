@@ -1,10 +1,6 @@
 en:
   app:
     app_name: "ΔV"
-  actions:
-    common:
-      actions: "Actions"
-      view: "View"
   about:
     what_the_heck_is_this: "What the heck is this?"
     long_description_one: "ΔV (DeltaVee) is a sci-fi role-playing video game, built using web development technology.  It is designed to be an \"In-Character\" (IC) role-playing simulation of a futuristic spaceship and space colony management software."
