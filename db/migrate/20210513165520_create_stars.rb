@@ -34,8 +34,8 @@ class CreateStars < ActiveRecord::Migration[6.0]
       t.string :spectral_type, null: false
       t.float :color_index, null: false
       t.float :luminosity, null: false
-      t.float :temperature, null: false # Kelvin
-      t.float :peak_wavelength, null: false # Nanometers
+      t.integer :temperature, null: false # Kelvin
+      t.integer :peak_wavelength, null: false # Nanometers
       t.string :hex_color, null: false
       t.integer :red_color, null: false
       t.integer :green_color, null: false

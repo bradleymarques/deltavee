@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(version: 2021_05_15_120756) do
     t.string "spectral_type", null: false
     t.float "color_index", null: false
     t.float "luminosity", null: false
-    t.float "temperature", null: false
-    t.float "peak_wavelength", null: false
+    t.integer "temperature", null: false
+    t.integer "peak_wavelength", null: false
     t.string "hex_color", null: false
     t.integer "red_color", null: false
     t.integer "green_color", null: false

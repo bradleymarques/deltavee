@@ -29,46 +29,49 @@ class StarCsvImporter
   private
 
   def import_star(row)
-    system = System.new(
-      name: clean(fetch_system_name(row)),
-      x: clean(row["x"]),
-      y: clean(row["y"]),
-      z: clean(row["z"]),
-      giliese_catalogue_name: clean(row["giliese_catalogue_name"]),
-      bayer_flamsteed_designation: clean(row["bayer_flamsteed_designation"]),
-      proper_name: clean(row["proper_name"]),
-      absolute_magnitude: clean(row["absolute_magnitude"]),
-      spectral_type: clean(row["spectral_type"]),
-      colour_index: clean(row["colour_index"]),
-      constellation: clean(row["constellation"]),
-      luminosity: clean(row["luminosity"])
+    star = Star.new(
+      id: row["star_id"],
+      proper_name: row["proper_name"],
+      hyg_database_id: row["hyg_database_id"],
+      hipparcos_catalog_id: row["hipparcos_catalog_id"],
+      henry_draper_catalog_id: row["henry_draper_catalog_id"],
+      harvard_revised_catalog_id: row["harvard_revised_catalog_id"],
+      gliese_catalog_id: row["gliese_catalog_id"],
+      bayer_flamsteed_designation: row["bayer_flamsteed_designation"],
+      bayer_designation: row["bayer"],
+      flamsteed_designation: row["flam"],
+      right_ascension: row["right_ascension"],
+      declination: row["declination"],
+      distance_from_sol: row["distance_from_sol"],
+      x: row["x"],
+      y: row["y"],
+      z: row["z"],
+      velocity_x: row["vx"],
+      velocity_y: row["vy"],
+      velocity_z: row["vz"],
+      constellation: row["con"],
+      visual_magnitude: row["visual_magnitude"],
+      absolute_magnitude: row["absolute_magnitude"],
+      spectral_type: row["spectral_type"],
+      color_index: row["color_index"],
+      luminosity: row["luminosity"],
+      temperature: row["temperature"],
+      peak_wavelength: row["peak_wavelength"],
+      hex_color: row["hex_color"],
+      red_color: row["red_color"],
+      green_color: row["green_color"],
+      blue_color: row["blue_color"]
     )
 
-    if system.valid?
-      system.save!
-    elsif @show_progress
-      puts "Error in importing row: #{row}. Errors: #{system.errors.full_messages.to_sentence}"
+    if star.valid?
+      star.save!
+    else
+      id = row["star_id"]
+      puts "Could not import Star with id: #{id}!" if @show_progress
     end
-  end
-
-  def fetch_system_name(row)
-    row["proper_name"] ||
-      row["bayer_flamsteed_designation"] ||
-      row["giliese_catalogue_name"] ||
-      random_system_name
-  end
-
-  def random_system_name
-    NameGenerators::SystemNameGenerator.new.generate
   end
 
   def check_file_exists
     raise ArgumentError unless FileTest.exist?(@filename)
-  end
-
-  def clean(str)
-    return if str.nil?
-
-    str.strip.gsub(/\s+/, " ")
   end
 end
