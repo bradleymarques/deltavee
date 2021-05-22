@@ -56,7 +56,7 @@ class PlanetCsvImporter
 
   def setup_progress_bar
     @progress_bar = ProgressBar.create(
-      title: "Stars",
+      title: "Planets",
       starting_at: 0,
       total: @number_lines,
       progress_mark: "="
