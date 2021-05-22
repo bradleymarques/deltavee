@@ -1,27 +1,23 @@
 require "csv"
 
 ##
-# Imports stars from a CSV (semi-colon delimited) file
+# Imports stars from a semi-colon delimited file
 #
 class StarCsvImporter
-  ALL = :all
-
-  def initialize(filename:, row_count: ALL, show_progress: false)
+  def initialize(filename:, show_progress: false)
     @filename = filename
     @show_progress = show_progress
-    @row_count = row_count
+
     check_file_exists
+    count_number_lines
+    setup_progress_bar if @show_progress
   end
 
   def import
-    puts("Importing stars from #{@filename}") if @show_progress
-
     CSV.foreach(@filename, { col_sep: ";", headers: true }).with_index do |row, index|
-      break if (@row_count != ALL) && (index >= @row_count)
       import_star(row)
+      @progress_bar.increment if @show_progress
     end
-
-    puts(" Done!") if @show_progress
   end
 
   private
@@ -30,17 +26,25 @@ class StarCsvImporter
     star_data = row.to_h.except("star_id", "planet_count", "color_id")
     star = Star.new(star_data)
     star.id = row["star_id"]
-
-    if star.valid?
-      print("⭐️") if @show_progress
-      star.save!
-    elsif @show_progress
-      print("❌") if @show_progress
-      puts(star.errors.full_messages.to_sentence)
-    end
+    star.save!
   end
 
   def check_file_exists
     raise ArgumentError unless FileTest.exist?(@filename)
+  end
+
+  def count_number_lines
+    file = File.open(@filename)
+    @number_lines = file.readlines.size
+    file.close
+  end
+
+  def setup_progress_bar
+    @progress_bar = ProgressBar.create(
+      title: "Stars",
+      starting_at: 0,
+      total: @number_lines,
+      progress_mark: "⭐️"
+    )
   end
 end

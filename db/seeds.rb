@@ -1,14 +1,12 @@
 # Import Stars from CSV file
 StarCsvImporter.new(
   filename: Rails.root.join("data", "stars.csv"),
-  row_count: :all,
   show_progress: true
 ).import
 
 # Import Planets from CSV file
 PlanetCsvImporter.new(
   filename: Rails.root.join("data", "planets.csv"),
-  row_count: :all,
   show_progress: true
 ).import
 
