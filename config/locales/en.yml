@@ -1,7 +1,6 @@
 en:
   app:
     app_name: "ΔV"
-    app_name_long: "DeltaVee"
   actions:
     common:
       actions: "Actions"
@@ -12,36 +11,14 @@ en:
     long_description_two: "The game is completely free-to-play and is open source."
     long_description_three: "Fly safe and let me know what you think at:"
     github: "GitHub"
-  home:
-    app_description: "An all-inclusive dashboard for your extra-terrestrial adventures"
   navigation:
-    universe_map: "Maps"
     back: "Back"
     about: "About"
     login: "Log in"
-    login_long: "Commander Login"
     logout: "Logout"
     register: "Register"
-    register_long: "Register as a commander"
     home: "Home"
     dashboard: "Dashboard"
-    map: "Universe Map"
-    notifications: "Email"
-    fleets: "Fleets"
-  notifications:
-    inbox: "Inbox"
-    outbox: "Outbox"
-    compose: "+ Compose"
-    send: "Send"
-    sent: "Sent"
-    sender: "Sender"
-    subject: "Subject"
-    preview: "Preview"
   users:
     username_explanation: "Your username will be visible to other players"
     email_explanation: "Your email is not visible to other players"
-  welcome:
-    fleet_name: "Starting Fleet"
-    notification:
-      subject: "Subject"
-      content: "Content"
