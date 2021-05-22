@@ -31,7 +31,7 @@ class CreateStars < ActiveRecord::Migration[6.0]
       t.float :absolute_magnitude, null: false
 
       # Color
-      t.string :spectral_type, null: false
+      t.string :spectral_type, null: true
       t.float :color_index, null: true
       t.float :luminosity, null: true
       t.integer :temperature, null: true # Kelvin

@@ -143,7 +143,7 @@ ActiveRecord::Schema.define(version: 2021_05_22_071321) do
     t.string "constellation"
     t.float "visual_magnitude", null: false
     t.float "absolute_magnitude", null: false
-    t.string "spectral_type", null: false
+    t.string "spectral_type"
     t.float "color_index"
     t.float "luminosity"
     t.integer "temperature"

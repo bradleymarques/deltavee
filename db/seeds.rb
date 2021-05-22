@@ -1,7 +1,7 @@
 # Import Stars from CSV file
 StarCsvImporter.new(
   filename: Rails.root.join("data", "stars.csv"),
-  row_count: 10,
+  row_count: :all,
   show_progress: true
 ).import
 

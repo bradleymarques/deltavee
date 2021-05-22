@@ -10,7 +10,6 @@ class Star < ApplicationRecord
   validates :velocity_z, presence: true # parsecs per year
   validates :visual_magnitude, presence: true
   validates :absolute_magnitude, presence: true
-  validates :spectral_type, presence: true
   validates :hex_color, presence: true
   validates :red_color, presence: true
   validates :green_color, presence: true
