@@ -1,10 +1,12 @@
 # Import Stars from CSV file
+puts "Importing Stars from /data/stars.csv"
 StarCsvImporter.new(
   filename: Rails.root.join("data", "stars.csv"),
   show_progress: true
 ).import
 
 # Import Planets from CSV file
+puts "Importing Planets from /data/planets.csv"
 PlanetCsvImporter.new(
   filename: Rails.root.join("data", "planets.csv"),
   show_progress: true

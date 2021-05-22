@@ -44,7 +44,7 @@ class StarCsvImporter
       title: "Stars",
       starting_at: 0,
       total: @number_lines,
-      progress_mark: "⭐️"
+      progress_mark: "="
     )
   end
 end
