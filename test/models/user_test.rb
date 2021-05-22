@@ -14,15 +14,4 @@ class UserTest < ActiveSupport::TestCase
     assert(user.valid?, user.errors.full_messages.to_sentence)
     assert(user.persisted?)
   end
-
-  test "the factory can create a valid user with sent and received notifications" do
-    user = FactoryBot.create(
-      :user,
-      :with_sent_notifications,
-      :with_received_notifications
-    )
-
-    assert_equal(1, user.sent_notifications.size)
-    assert_equal(5, user.received_notifications.size)
-  end
 end

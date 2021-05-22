@@ -31,7 +31,7 @@ class UsersTest < ApplicationSystemTestCase
     register_buttons = page.find_all("a", text: I18n.t("navigation.register"))
     register_buttons.first.click
 
-    assert_selector("h1", text: I18n.t("navigation.register_long"))
+    assert_selector("h1", text: I18n.t("navigation.register"))
 
     fill_in("Username", with: "buzz_lightyear")
     fill_in("Email", with: email)
@@ -48,7 +48,7 @@ class UsersTest < ApplicationSystemTestCase
     register_buttons = page.find_all("a", text: I18n.t("navigation.register"))
     register_buttons.first.click
 
-    assert_selector("h1", text: I18n.t("navigation.register_long"))
+    assert_selector("h1", text: I18n.t("navigation.register"))
 
     fill_in("Email", with: "someone@example.com")
 
@@ -62,7 +62,7 @@ class UsersTest < ApplicationSystemTestCase
     register_buttons = page.find_all("a", text: I18n.t("navigation.register"))
     register_buttons.first.click
 
-    assert_selector("h1", text: I18n.t("navigation.register_long"))
+    assert_selector("h1", text: I18n.t("navigation.register"))
 
     fill_in("Username", with: "buzz_lightyear")
     fill_in("Email", with: "someone@example.com")
@@ -81,7 +81,7 @@ class UsersTest < ApplicationSystemTestCase
     login_buttons = page.find_all("a", text: I18n.t("navigation.login"))
     login_buttons.first.click
 
-    assert_selector("h1", text: I18n.t("navigation.login_long"))
+    assert_selector("h1", text: I18n.t("navigation.login"))
 
     fill_in("Username", with: user.username)
     fill_in("Password", with: "some-strong-password")
@@ -98,7 +98,7 @@ class UsersTest < ApplicationSystemTestCase
     login_buttons = page.find_all("a", text: I18n.t("navigation.login"))
     login_buttons.first.click
 
-    assert_selector("h1", text: I18n.t("navigation.login_long"))
+    assert_selector("h1", text: I18n.t("navigation.login"))
 
     fill_in("Username", with: user.username)
     fill_in("Password", with: "some-strong-password")
@@ -115,7 +115,7 @@ class UsersTest < ApplicationSystemTestCase
     login_buttons = page.find_all("a", text: I18n.t("navigation.login"))
     login_buttons.first.click
 
-    assert_selector("h1", text: I18n.t("navigation.login_long"))
+    assert_selector("h1", text: I18n.t("navigation.login"))
 
     fill_in("Username", with: "thisisthewrongusername")
     fill_in("Password", with: "some-strong-password")
@@ -136,7 +136,7 @@ class UsersTest < ApplicationSystemTestCase
     login_buttons = page.find_all("a", text: I18n.t("navigation.login"))
     login_buttons.first.click
 
-    assert_selector("h1", text: I18n.t("navigation.login_long"))
+    assert_selector("h1", text: I18n.t("navigation.login"))
 
     fill_in("Username", with: user.username)
     fill_in("Password", with: "") # no password
@@ -157,7 +157,7 @@ class UsersTest < ApplicationSystemTestCase
     login_buttons = page.find_all("a", text: I18n.t("navigation.login"))
     login_buttons.first.click
 
-    assert_selector("h1", text: I18n.t("navigation.login_long"))
+    assert_selector("h1", text: I18n.t("navigation.login"))
     assert(has_text?("Forgot your password?"))
     click_on("Forgot your password?")
 
@@ -175,7 +175,7 @@ class UsersTest < ApplicationSystemTestCase
     login_buttons = page.find_all("a", text: I18n.t("navigation.login"))
     login_buttons.first.click
 
-    assert_selector("h1", text: I18n.t("navigation.login_long"))
+    assert_selector("h1", text: I18n.t("navigation.login"))
     assert(has_text?("Forgot your password?"))
     click_on("Forgot your password?")
 
@@ -221,45 +221,5 @@ class UsersTest < ApplicationSystemTestCase
     click_on("Resend unlock instructions")
 
     assert(has_text?(I18n.t("devise.unlocks.send_paranoid_instructions")))
-  end
-
-  test "a user logging in for the very first time is taken through the
-        FirstTimeUserSetup" do
-    FactoryBot.create(:system, :sol)
-    user = FactoryBot.create(:user, has_signed_in_at_least_once: false)
-    FirstTimeUserSetup.any_instance.expects(:call)
-
-    visit(root_url)
-    login_buttons = page.find_all("a", text: I18n.t("navigation.login"))
-    login_buttons.first.click
-
-    assert_selector("h1", text: I18n.t("navigation.login_long"))
-
-    fill_in("Username", with: user.username)
-    fill_in("Password", with: "some-strong-password")
-
-    find('input[name="commit"]').click
-
-    assert(has_text?(I18n.t("devise.sessions.signed_in")))
-  end
-
-  test "a user logging in on subsequent times is not taken through the
-        FirstTimeUserSetup" do
-    FactoryBot.create(:system, :sol)
-    user = FactoryBot.create(:user, has_signed_in_at_least_once: true)
-    FirstTimeUserSetup.any_instance.expects(:call).never
-
-    visit(root_url)
-    login_buttons = page.find_all("a", text: I18n.t("navigation.login"))
-    login_buttons.first.click
-
-    assert_selector("h1", text: I18n.t("navigation.login_long"))
-
-    fill_in("Username", with: user.username)
-    fill_in("Password", with: "some-strong-password")
-
-    find('input[name="commit"]').click
-
-    assert(has_text?(I18n.t("devise.sessions.signed_in")))
   end
 end

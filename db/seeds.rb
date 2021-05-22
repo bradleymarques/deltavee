@@ -1,14 +1,16 @@
-# Import Systems from CSV file
-importer = SystemCsvImporter.new(
-  filename: Rails.root.join("data", "systems.csv"),
-  row_count: 500,
+# Import Stars from CSV file
+StarCsvImporter.new(
+  filename: Rails.root.join("data", "stars.csv"),
+  row_count: :all,
   show_progress: true
-)
+).import
 
-importer.import
-
-# Create System User
-SystemUser.new.system_user
+# Import Planets from CSV file
+PlanetCsvImporter.new(
+  filename: Rails.root.join("data", "planets.csv"),
+  row_count: :all,
+  show_progress: true
+).import
 
 # Create some other Users (Players)
 FactoryBot.create(
@@ -19,18 +21,9 @@ FactoryBot.create(
   has_signed_in_at_least_once: false
 )
 
-old_player = FactoryBot.create(
+FactoryBot.create(
   :user,
-  :with_received_notifications,
-  :with_sent_notifications,
   username: "old_player",
   password: "Asdf;lkj",
   password_confirmation: "Asdf;lkj"
 )
-
-sol = System.find_by(name: "Sol")
-
-FactoryBot.create(:fleet, owned_by: old_player, system: sol)
-FactoryBot.create(:fleet, owned_by: old_player, system: sol)
-FactoryBot.create(:fleet, owned_by: old_player, system: sol)
-FactoryBot.create(:fleet, owned_by: old_player, system: sol)

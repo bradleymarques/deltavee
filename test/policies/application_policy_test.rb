@@ -2,7 +2,7 @@ require "test_helper"
 
 class ApplicationPolicyTest < ActiveSupport::TestCase
   test "by default a user cannot do anything to a record" do
-    record = System.new
+    record = Star.new
     user = User.new
 
     refute_permit(user, record, :index?)
@@ -15,10 +15,10 @@ class ApplicationPolicyTest < ActiveSupport::TestCase
   end
 
   test "by default a user cannot view any scopes" do
-    FactoryBot.create(:system)
+    FactoryBot.create(:star)
     user = User.new
 
-    scope = ApplicationPolicy::Scope.new(user, System)
+    scope = ApplicationPolicy::Scope.new(user, Star)
     assert_empty(scope.resolve)
   end
 end

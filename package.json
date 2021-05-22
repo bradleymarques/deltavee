@@ -5,10 +5,11 @@
     "@fortawesome/fontawesome-free": "^5.15.3",
     "@popperjs/core": "^2.9.2",
     "@rails/actioncable": "^6.0.0",
-    "@rails/actiontext": "^6.0.3-7",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.3.0",
+    "@react-three/drei": "^5.0.0",
+    "@react-three/fiber": "^6.1.4",
     "@types/react": "^17.0.5",
     "@types/react-dom": "^17.0.5",
     "bootstrap": "^5.0.0",
@@ -16,6 +17,7 @@
     "popper.js": "^1.16.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "three": "^0.128.0",
     "trix": "^1.2.0",
     "ts-loader": "8.2.0",
     "turbolinks": "^5.2.0",
@@ -25,6 +27,7 @@
   "version": "0.1.0",
   "devDependencies": {
     "@babel/preset-react": "7.6.3",
+    "@types/three": "^0.128.0",
     "webpack-dev-server": "^3.11.2"
   }
 }
