@@ -12,7 +12,7 @@ class CreatePlanets < ActiveRecord::Migration[6.0]
       t.float :x, null: false
       t.float :y, null: false
       t.float :z, null: false
-      t.string :star_name, null: false
+      t.string :star_name, null: true
       t.float :ra, null: false
       t.float :dec, null: false
       t.float :mag_v, null: true

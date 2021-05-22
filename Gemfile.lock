@@ -339,6 +339,7 @@ DEPENDENCIES
   rails (~> 6.0.3, >= 6.0.3.7)
   rails-controller-testing
   rubocop (~> 1.14)
+  ruby-progressbar
   sass-rails (>= 6)
   selenium-webdriver
   simplecov

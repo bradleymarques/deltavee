@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2021_05_22_071321) do
     t.float "x", null: false
     t.float "y", null: false
     t.float "z", null: false
-    t.string "star_name", null: false
+    t.string "star_name"
     t.float "ra", null: false
     t.float "dec", null: false
     t.float "mag_v"

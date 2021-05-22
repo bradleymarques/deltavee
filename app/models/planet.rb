@@ -3,7 +3,6 @@ class Planet < ApplicationRecord
   validates :x, presence: true
   validates :y, presence: true
   validates :z, presence: true
-  validates :star_name, presence: true
   validates :ra, presence: true
   validates :dec, presence: true
 

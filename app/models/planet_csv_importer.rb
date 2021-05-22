@@ -1,37 +1,26 @@
 require "csv"
 
 class PlanetCsvImporter
-  ALL = :all
-
-  def initialize(filename:, row_count: ALL, show_progress: false)
+  def initialize(filename:, show_progress: false)
     @filename = filename
     @show_progress = show_progress
-    @row_count = row_count
+
     check_file_exists
+    count_number_lines
+    setup_progress_bar if @show_progress
   end
 
   def import
-    puts("Importing planets from #{@filename}") if @show_progress
-
     CSV.foreach(@filename, { col_sep: ";", headers: true }).with_index do |row, index|
-      break if (@row_count != ALL) && (index >= @row_count)
       import_planet(row)
+      @progress_bar.increment if @show_progress
     end
-
-    puts(" Done!") if @show_progress
   end
 
   def import_planet(row)
     planet_data = extract_planet_data(row)
     planet = Planet.new(planet_data)
-
-    if planet.valid?
-      print("🪐") if @show_progress
-      planet.save
-    elsif @show_progress
-      print("❌") if @show_progress
-      puts(planet.errors.full_messages.to_sentence)
-    end
+    planet.save!
   end
 
   private
@@ -57,5 +46,20 @@ class PlanetCsvImporter
     return if string.nil?
 
     string.strip.underscore.gsub(" ", "_")
+  end
+
+  def count_number_lines
+    file = File.open(@filename)
+    @number_lines = file.readlines.size
+    file.close
+  end
+
+  def setup_progress_bar
+    @progress_bar = ProgressBar.create(
+      title: "Planets",
+      starting_at: 0,
+      total: @number_lines,
+      progress_mark: "="
+    )
   end
 end
