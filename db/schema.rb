@@ -10,51 +10,115 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_15_120756) do
+ActiveRecord::Schema.define(version: 2021_05_22_071321) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "action_text_rich_texts", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "body"
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
-  end
-
-  create_table "active_storage_attachments", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.bigint "blob_id", null: false
-    t.datetime "created_at", null: false
-    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
-    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
-  end
-
-  create_table "active_storage_blobs", force: :cascade do |t|
-    t.string "key", null: false
-    t.string "filename", null: false
-    t.string "content_type"
-    t.text "metadata"
-    t.bigint "byte_size", null: false
-    t.string "checksum", null: false
-    t.datetime "created_at", null: false
-    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
-  end
-
-  create_table "notifications", force: :cascade do |t|
-    t.bigint "sender_id", null: false
-    t.bigint "recipient_id", null: false
-    t.boolean "read", default: false, null: false
-    t.string "subject", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["recipient_id"], name: "index_notifications_on_recipient_id"
-    t.index ["sender_id"], name: "index_notifications_on_sender_id"
+  create_table "planets", force: :cascade do |t|
+    t.string "planet_name", null: false
+    t.string "alternate_names"
+    t.bigint "star_id"
+    t.float "x", null: false
+    t.float "y", null: false
+    t.float "z", null: false
+    t.string "star_name", null: false
+    t.float "ra", null: false
+    t.float "dec", null: false
+    t.float "mag_v"
+    t.float "mag_i"
+    t.float "mag_j"
+    t.float "mag_h"
+    t.float "mag_k"
+    t.float "star_distance"
+    t.float "star_distance_error_min"
+    t.float "star_distance_error_max"
+    t.float "star_metallicity"
+    t.float "star_metallicity_error_min"
+    t.float "star_metallicity_error_max"
+    t.float "star_mass"
+    t.float "star_mass_error_min"
+    t.float "star_mass_error_max"
+    t.float "star_radius"
+    t.float "star_radius_error_min"
+    t.float "star_radius_error_max"
+    t.float "star_sp_type"
+    t.float "star_age"
+    t.float "star_age_error_min"
+    t.float "star_age_error_max"
+    t.float "star_teff"
+    t.float "star_teff_error_min"
+    t.float "star_teff_error_max"
+    t.float "star_detected_disc"
+    t.float "star_magnetic_field"
+    t.string "star_alternate_names"
+    t.integer "planet_status"
+    t.integer "discovered"
+    t.date "updated"
+    t.string "publication"
+    t.integer "detection_type"
+    t.integer "mass_detection_type"
+    t.integer "radius_detection_type"
+    t.float "mass"
+    t.float "mass_error_min"
+    t.float "mass_error_max"
+    t.float "mass_sini"
+    t.float "mass_sini_error_min"
+    t.float "mass_sini_error_max"
+    t.float "radius"
+    t.float "radius_error_min"
+    t.float "radius_error_max"
+    t.float "orbital_period"
+    t.float "orbital_period_error_min"
+    t.float "orbital_period_error_max"
+    t.float "semi_major_axis"
+    t.float "semi_major_axis_error_min"
+    t.float "semi_major_axis_error_max"
+    t.float "eccentricity"
+    t.float "eccentricity_error_min"
+    t.float "eccentricity_error_max"
+    t.float "inclination"
+    t.float "inclination_error_min"
+    t.float "inclination_error_max"
+    t.float "angular_distance"
+    t.float "omega"
+    t.float "omega_error_min"
+    t.float "omega_error_max"
+    t.float "tperi"
+    t.float "tperi_error_min"
+    t.float "tperi_error_max"
+    t.float "tconj"
+    t.float "tconj_error_min"
+    t.float "tconj_error_max"
+    t.float "tzero_tr"
+    t.float "tzero_tr_error_min"
+    t.float "tzero_tr_error_max"
+    t.float "tzero_tr_sec"
+    t.float "tzero_tr_sec_error_min"
+    t.float "tzero_tr_sec_error_max"
+    t.float "lambda_angle"
+    t.float "lambda_angle_error_min"
+    t.float "lambda_angle_error_max"
+    t.float "impact_parameter"
+    t.float "impact_parameter_error_min"
+    t.float "impact_parameter_error_max"
+    t.float "tzero_vr"
+    t.float "tzero_vr_error_min"
+    t.float "tzero_vr_error_max"
+    t.float "k"
+    t.float "k_error_min"
+    t.float "k_error_max"
+    t.float "temp_calculated"
+    t.float "temp_calculated_error_min"
+    t.float "temp_calculated_error_max"
+    t.float "temp_measured"
+    t.float "hot_point_lon"
+    t.float "geometric_albedo"
+    t.float "geometric_albedo_error_min"
+    t.float "geometric_albedo_error_max"
+    t.float "log_g"
+    t.float "molecules"
+    t.index ["star_id"], name: "index_planets_on_star_id"
   end
 
   create_table "stars", force: :cascade do |t|
@@ -80,10 +144,10 @@ ActiveRecord::Schema.define(version: 2021_05_15_120756) do
     t.float "visual_magnitude", null: false
     t.float "absolute_magnitude", null: false
     t.string "spectral_type", null: false
-    t.float "color_index", null: false
-    t.float "luminosity", null: false
-    t.integer "temperature", null: false
-    t.integer "peak_wavelength", null: false
+    t.float "color_index"
+    t.float "luminosity"
+    t.integer "temperature"
+    t.integer "peak_wavelength"
     t.string "hex_color", null: false
     t.integer "red_color", null: false
     t.integer "green_color", null: false
@@ -122,7 +186,4 @@ ActiveRecord::Schema.define(version: 2021_05_15_120756) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "notifications", "users", column: "recipient_id"
-  add_foreign_key "notifications", "users", column: "sender_id"
 end

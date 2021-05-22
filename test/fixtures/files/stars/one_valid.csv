@@ -1,2 +1,3 @@
-"star_id";"hyg_database_id";"hipparcos_catalog_id";"henry_draper_catalog_id";"harvard_revised_catalog_id";"gliese_catalog_id";"bayer_flamsteed_designation";"proper_name";"right_ascension";"declination";"distance_from_sol";"pmra";"pmdec";"rv";"visual_magnitude";"absolute_magnitude";"spectral_type";"color_index";"x";"y";"z";"vx";"vy";"vz";"rarad";"decrad";"pmrarad";"pmdecrad";"bayer";"flam";"constellation";"comp";"comp_primary";"base";"luminosity";"var";"var_min";"var_max";"planet_count";"temperature";"peak_wavelength";"color_id";"hex_color";"red_color";"green_color";"blue_color"
-1;0;;;;;;"Sol";0;0;0;0;0;0;-26.7;4.85;"G2V";0.656;5e-06;0;0;0;0;0;0;0;0;0;;;;1;0;;1;;;;0;5756.58811269391;503.423198475776;38;"#fff1e5";255;241;229
+version https://git-lfs.github.com/spec/v1
+oid sha256:0aa6effd013d939c492df24e19f9c7eae962c97a06839069c6981d769a16d941
+size 605

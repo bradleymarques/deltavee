@@ -11,10 +11,6 @@ class Star < ApplicationRecord
   validates :visual_magnitude, presence: true
   validates :absolute_magnitude, presence: true
   validates :spectral_type, presence: true
-  validates :color_index, presence: true
-  validates :luminosity, presence: true
-  validates :temperature, presence: true
-  validates :peak_wavelength, presence: true
   validates :hex_color, presence: true
   validates :red_color, presence: true
   validates :green_color, presence: true
